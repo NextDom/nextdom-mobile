@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 10
+cache:
+  directories:
+    - src/node_modules
+script:
+  - cd src
+  - npm run test:unit
+after_script:
+  - npm install coveralls
+  - cat ./coverage/lcov.info | coveralls

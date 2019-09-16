@@ -46,10 +46,7 @@ export const store = new Vuex.Store({
         const rawEqLogicsOrder = localStorage.getItem("eqLogicsOrder");
         if (rawEqLogicsOrder === undefined || rawEqLogicsOrder === null) {
           state.eqLogicsOrder = {};
-          localStorage.setItem(
-            "eqLogicsOrder",
-            JSON.stringify(state.eqLogicsOrder)
-          );
+          localStorage.setItem("eqLogicsOrder", JSON.stringify(state.eqLogicsOrder));
         } else {
           state.eqLogicsOrder = JSON.parse(rawEqLogicsOrder);
         }
@@ -62,9 +59,6 @@ export const store = new Vuex.Store({
      * @param {Array} cmd Command object
      */
     setCmdComponentData(state, cmd) {
-      if (cmd.id == 1205 || cmd.id == 1206) {
-        console.log(cmd);
-      }
       let componentData = undefined;
       // Test generic type
       try {
@@ -73,20 +67,13 @@ export const store = new Vuex.Store({
       // Test for commands with template
       if (componentData === undefined) {
         try {
-          componentData =
-            CmdTemplates["cmds"][cmd.type][cmd.subType][cmd.template];
+          componentData = CmdTemplates["cmds"][cmd.type][cmd.subType][cmd.template];
         } catch {}
       }
       // Specials cases
       if (componentData === undefined) {
         const cmdName = cmd.name.toLowerCase();
-        if (
-          cmd.type === "action" &&
-          cmd.subType === "other" &&
-          (cmdName === "rafraichir" ||
-            cmdName === "refresh" ||
-            cmdName === "rafraîchir")
-        ) {
+        if (cmd.type === "action" && cmd.subType === "other" && (cmdName === "rafraichir" || cmdName === "refresh" || cmdName === "rafraîchir")) {
           componentData = {
             component: "RefreshCmd",
             icon: false,
@@ -97,13 +84,9 @@ export const store = new Vuex.Store({
       // Set default
       if (componentData === undefined) {
         try {
-          componentData =
-            CmdTemplates["cmds"][cmd.type][cmd.subType]["no_data"];
+          componentData = CmdTemplates["cmds"][cmd.type][cmd.subType]["no_data"];
         } catch {}
-      } else if (
-        componentData.component === "DefaultInfoCmd" &&
-        cmd.icon !== ""
-      ) {
+      } else if (componentData.component === "DefaultInfoCmd" && cmd.icon !== "") {
         componentData = {
           component: "DefaultIconInfoCmd",
           icon: true,
@@ -119,15 +102,7 @@ export const store = new Vuex.Store({
             button: false
           };
         } else {
-          let toShow =
-            "No component for command Id : " +
-            cmd.id +
-            " - Name : " +
-            cmd.name +
-            " - Type : " +
-            cmd.type +
-            " - SubType : " +
-            cmd.subType;
+          let toShow = "No component for command Id : " + cmd.id + " - Name : " + cmd.name + " - Type : " + cmd.type + " - SubType : " + cmd.subType;
           if (cmd.genericType) {
             toShow += " - GenericType : " + cmd.genericType;
           }
@@ -186,8 +161,7 @@ export const store = new Vuex.Store({
       if (!state.actionsList.hasOwnProperty(payload.cmdValue)) {
         state.actionsList[payload.cmdValue] = action;
       } else {
-        state.actionsList[payload.cmdValue][payload.genericType] =
-          payload.cmdId;
+        state.actionsList[payload.cmdValue][payload.genericType] = payload.cmdId;
       }
     },
     /**
@@ -209,10 +183,7 @@ export const store = new Vuex.Store({
      */
     saveEqLogicsOrder(state, payload) {
       state.eqLogicsOrder = payload;
-      localStorage.setItem(
-        "eqLogicsOrder",
-        JSON.stringify(state.eqLogicsOrder)
-      );
+      localStorage.setItem("eqLogicsOrder", JSON.stringify(state.eqLogicsOrder));
     }
   },
   getters: {
@@ -221,10 +192,7 @@ export const store = new Vuex.Store({
      * @param {Object} payload Id of the command and action requested {cmdId, action}
      */
     getAction: state => payload => {
-      if (
-        state.actionsList[payload.cmdId] !== undefined &&
-        state.actionsList[payload.cmdId][payload.action] !== undefined
-      ) {
+      if (state.actionsList[payload.cmdId] !== undefined && state.actionsList[payload.cmdId][payload.action] !== undefined) {
         return state.actionsList[payload.cmdId][payload.action];
       }
       return false;
