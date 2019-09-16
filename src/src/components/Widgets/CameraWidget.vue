@@ -21,7 +21,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 <template>
   <div v-packery-item class="packery-item large">
     <div class="widget-title">
-      <span class="title">{{ eqlogic.name }}</span>
+      <span class="title">{{ eqLogic.name }}</span>
       <span class="actions pull-right">
         <mu-button
           class="pull-right"
@@ -59,7 +59,7 @@ export default {
   },
   mounted() {
     this.refreshInterval = parseInt(
-      this.$props.eqlogic.configuration["thumbnail::refresh"]
+      this.$props.eqLogic.configuration["thumbnail::refresh"]
     );
     this.updateSnapshotUrl();
     let self = this;
@@ -76,9 +76,9 @@ export default {
       const now = new Date();
       this.snapshotUrl =
         "/plugins/camera/core/php/snapshot.php?id=" +
-        this.$props.eqlogic.id +
+        this.$props.eqLogic.id +
         "&apikey=" +
-        this.$props.eqlogic.configuration.localApiKey +
+        this.$props.eqLogic.configuration.localApiKey +
         "&t=" +
         now.getTime() +
         "&thumbnail=1";

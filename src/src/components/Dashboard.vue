@@ -34,7 +34,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
             v-if="isShowedEqLogic(eqLogic.id)"
             v-bind:key="eqLogic.id"
             v-bind:cmds="eqLogic.cmds"
-            v-bind:eqlogic="eqLogic"
+            v-bind:eqLogic="eqLogic"
           ></component>
         </template>
       </div>

@@ -166,7 +166,7 @@ export default {
       if (isVisibleStoredValue !== null) {
         this.form.isVisible = isVisibleStoredValue === "true" ? true : false;
       }
-      Communication.get("/api/eqlogic/room/" + this.room.id, data => {
+      Communication.get("/api/eqLogic/room/" + this.room.id, data => {
         // Loop with push for reactivity
         for (let eqLogicIndex = 0; eqLogicIndex < data.length; ++eqLogicIndex) {
           this.initEqLogicVisibility(data[eqLogicIndex].id);

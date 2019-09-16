@@ -21,7 +21,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 <template>
   <div v-packery-item class="packery-item" v-bind:class="[isLargeWidget ? 'large' : 'small']">
     <div class="widget-title">
-      <span class="title">{{ eqlogic.name }}</span>
+      <span class="title">{{ eqLogic.name }}</span>
       <span class="actions pull-right">
         <mu-button class="pull-right" slot="action" icon v-if="batteryIcon">
           <mu-icon v-bind:value="batteryIcon"></mu-icon>

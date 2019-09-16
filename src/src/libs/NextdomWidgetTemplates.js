@@ -19,16 +19,19 @@
  */
 import CameraWidget from "@/components/Widgets/CameraWidget.vue";
 import DefaultWidget from "@/components/Widgets/DefaultWidget.vue";
+import HeliotropeWidget from "@/components/Widgets/HeliotropeWidget.vue";
 import WeatherWidget from "@/components/Widgets/WeatherWidget.vue";
 
 export default {
   components: {
     CameraWidget,
     DefaultWidget,
+    HeliotropeWidget,
     WeatherWidget
   },
   widgets: {
     camera: "CameraWidget",
+    heliotrope: "HeliotropeWidget",
     weather: "WeatherWidget",
     default: "DefaultWidget"
   }

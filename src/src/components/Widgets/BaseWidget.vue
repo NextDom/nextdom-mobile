@@ -43,7 +43,7 @@ export default {
   },
   props: {
     // eqLogic data
-    eqlogic: null,
+    eqLogic: null,
     // List of commands
     cmds: {
       type: [Array],

@@ -19,10 +19,10 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div class="consumption-info-cmd cmd icon">
+  <div class="cmd icon">
     <div class="info-cmd">
-      <div>{{ cmd.name }}</div>
-      <span v-html="cmd.icon"></span>
+      <div v-if="showTitle">{{ cmd.name }}</div>
+      <i v-bind:class="icon"></i>
       <div>{{ cmd.state }} {{ cmd.unite }}</div>
     </div>
   </div>
@@ -37,7 +37,9 @@ export default {
   name: "DefaultIconInfoCmd",
   props: {
     // Command object
-    cmd: null
+    cmd: null,
+    icon: null,
+    showTitle: true
   },
   mounted() {
     this.$store.commit("addShowedCmd", { cmd: this.cmd });
