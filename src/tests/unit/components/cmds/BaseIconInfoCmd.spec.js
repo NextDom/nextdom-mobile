@@ -30,6 +30,9 @@ const wrapperOptions = {
   propsData: propsData
 };
 describe("BaseIconInfoCmd.vue", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   test("is a Vue instance", () => {
     const wrapper = shallowMount(BaseIconInfoCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();

@@ -32,7 +32,7 @@ export default {
   data: function() {
     return {
       // Showed icon
-      icon: "nextdom-porte-ferme"
+      icon: "battery_full"
     };
   },
   render: function() {
@@ -51,14 +51,14 @@ export default {
      * Called on command value change
      */
     update() {
-      let batteryIcon = "battery_full";
+      this.icon = "battery_full";
       if (this.cmd.value < 30) {
-        batteryIcon = "battery_alert";
+        this.icon = "battery_alert";
       }
       /**
        * Update battery icon on widget
        */
-      this.$emit("setBatteryInfo", batteryIcon);
+      this.$emit("setBatteryInfo", this.icon);
     }
   }
 };

@@ -63,12 +63,12 @@ export const store = new Vuex.Store({
       // Test generic type
       try {
         componentData = CmdTemplates["cmdsWithoutTemplate"][cmd.genericType];
-      } catch {}
+      } catch (error) {}
       // Test for commands with template
       if (componentData === undefined) {
         try {
           componentData = CmdTemplates["cmds"][cmd.type][cmd.subType][cmd.template];
-        } catch {}
+        } catch (error) {}
       }
       // Specials cases
       if (componentData === undefined) {
@@ -85,7 +85,7 @@ export const store = new Vuex.Store({
       if (componentData === undefined) {
         try {
           componentData = CmdTemplates["cmds"][cmd.type][cmd.subType]["no_data"];
-        } catch {}
+        } catch (error) {}
       } else if (componentData.component === "DefaultInfoCmd" && cmd.icon !== "") {
         componentData = {
           component: "DefaultIconInfoCmd",
