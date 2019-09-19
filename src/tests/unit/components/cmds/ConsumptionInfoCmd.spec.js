@@ -1,12 +1,12 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import ActionLinkedCmd from "@/components/Cmds/ActionLinkedCmd.vue";
+import ConsumptionInfoCmd from "@/components/Cmds/ConsumptionInfoCmd.vue";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
 const mutations = {
-  addAction: jest.fn()
+  addShowedCmd: jest.fn()
 };
 
 const store = new Vuex.Store({
@@ -16,9 +16,9 @@ const store = new Vuex.Store({
 
 const propsData = {
   cmd: {
-    name: "CmdTest",
-    state: 12,
-    unite: "m"
+    name: "ConsumptionTest",
+    value: 90,
+    unite: "%"
   }
 };
 
@@ -29,12 +29,18 @@ const wrapperOptions = {
   },
   propsData: propsData
 };
-describe("ActionLinkedCmd.vue", () => {
+
+describe("ConsumptionInfoCmd.vue", () => {
   afterEach(() => {
     jest.clearAllMocks();
+    propsData.cmd.value = 90;
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(ActionLinkedCmd, wrapperOptions);
+    const wrapper = shallowMount(ConsumptionInfoCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
+  });
+  test("icon initiliazation", () => {
+    const wrapper = shallowMount(ConsumptionInfoCmd, wrapperOptions);
+    expect(wrapper.vm.$data.icon).toBe("fas fa-chart-area");
   });
 });

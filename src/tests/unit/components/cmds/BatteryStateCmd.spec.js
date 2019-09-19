@@ -2,8 +2,8 @@ import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import BatteryStateCmd from "@/components/Cmds/BatteryStateCmd.vue";
 
-const localValue = createLocalVue();
-localValue.use(Vuex);
+const localVue = createLocalVue();
+localVue.use(Vuex);
 
 const mutations = {
   addShowedCmd: jest.fn()
@@ -21,7 +21,7 @@ const propsData = {
 };
 
 const wrapperOptions = {
-  localValue,
+  localVue,
   mocks: {
     $store: store
   },

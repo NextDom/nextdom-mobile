@@ -24,28 +24,28 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       <span class="title">{{ eqLogic.name }}</span>
     </div>
     <div>
-      <DefaultIconIncoCmd
+      <DefaultIconInfoCmd
         v-bind:cmd="azimut"
         v-bind:showTitle="false"
         v-bind:icon="'fas fa-adjust'"
-      ></DefaultIconIncoCmd>
-      <DefaultIconIncoCmd
+      ></DefaultIconInfoCmd>
+      <DefaultIconInfoCmd
         v-bind:cmd="altitude"
         v-bind:showTitle="false"
         v-bind:icon="'fas fa-compass'"
-      ></DefaultIconIncoCmd>
+      ></DefaultIconInfoCmd>
     </div>
     <div>
-      <DefaultIconIncoCmd
+      <DefaultIconInfoCmd
         v-bind:cmd="sunrise"
         v-bind:showTitle="false"
         v-bind:icon="'fas fa-sun-o'"
-      ></DefaultIconIncoCmd>
-      <DefaultIconIncoCmd
+      ></DefaultIconInfoCmd>
+      <DefaultIconInfoCmd
         v-bind:cmd="sunset"
         v-bind:showTitle="false"
         v-bind:icon="'fas fa-moon-o'"
-      ></DefaultIconIncoCmd>
+      ></DefaultIconInfoCmd>
     </div>
   </div>
 </template>
@@ -87,7 +87,6 @@ export default {
           this.sunset = this.dataCmds[cmdIndex];
           break;
         default:
-          console.log(logicalId);
           showed = false;
       }
       // Initialize update on change
