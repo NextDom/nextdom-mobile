@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import TemperatureInfoCmd from "@/components/Cmds/TemperatureInfoCmd.vue";
 
@@ -36,11 +36,11 @@ describe("TemperatureInfoCmd.vue", () => {
     propsData.cmd.value = 90;
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(TemperatureInfoCmd, wrapperOptions);
+    const wrapper = mount(TemperatureInfoCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
   test("icon initiliazation", () => {
-    const wrapper = shallowMount(TemperatureInfoCmd, wrapperOptions);
+    const wrapper = mount(TemperatureInfoCmd, wrapperOptions);
     expect(wrapper.vm.$data.icon).toBe("fa fa-thermometer-empty");
   });
 });

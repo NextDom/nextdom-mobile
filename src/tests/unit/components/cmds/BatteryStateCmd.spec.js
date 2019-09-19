@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import BatteryStateCmd from "@/components/Cmds/BatteryStateCmd.vue";
 
@@ -34,20 +34,20 @@ describe("BatteryStateCmd.vue", () => {
     propsData.cmd.value = 90;
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(BatteryStateCmd, wrapperOptions);
+    const wrapper = mount(BatteryStateCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
   test("test default value battery high", () => {
-    const wrapper = shallowMount(BatteryStateCmd, wrapperOptions);
+    const wrapper = mount(BatteryStateCmd, wrapperOptions);
     expect(wrapper.vm.$data.icon).toBe("battery_full");
   });
   test("test default value battery low", () => {
     propsData.cmd.value = 20;
-    const wrapper = shallowMount(BatteryStateCmd, wrapperOptions);
+    const wrapper = mount(BatteryStateCmd, wrapperOptions);
     expect(wrapper.vm.$data.icon).toBe("battery_alert");
   });
   test("cmd store interaction", () => {
-    const wrapper = shallowMount(BatteryStateCmd, wrapperOptions);
+    const wrapper = mount(BatteryStateCmd, wrapperOptions);
     expect(mutations.addShowedCmd).toHaveBeenCalled();
     expect(wrapper.emitted().setBatteryInfo).toBeTruthy();
     const updateFunc = mutations.addShowedCmd.mock.calls[0][1].updateFunc;

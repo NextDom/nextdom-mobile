@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import BaseIconInfoCmd from "@/components/Cmds/BaseIconInfoCmd.vue";
 
@@ -25,7 +25,7 @@ const propsData = {
 let wrapper = null;
 describe("BaseIconInfoCmd.vue", () => {
   beforeEach(() => {
-    wrapper = shallowMount(BaseIconInfoCmd, { localVue, mocks: { $store: store }, propsData: propsData });
+    wrapper = mount(BaseIconInfoCmd, { localVue, mocks: { $store: store }, propsData: propsData });
   });
   afterEach(() => {
     wrapper.destroy();

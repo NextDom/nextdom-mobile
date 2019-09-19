@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import DefaultStringCmd from "@/components/Cmds/DefaultStringCmd.vue";
 import Vuex from "vuex";
 import MuseUI from "muse-ui";
@@ -35,15 +35,15 @@ describe("DefaultStringCmd.vue", () => {
     jest.clearAllMocks();
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(DefaultStringCmd, wrapperOptions);
+    const wrapper = mount(DefaultStringCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
   test("render visibile", () => {
-    const wrapper = shallowMount(DefaultStringCmd, wrapperOptions);
+    const wrapper = mount(DefaultStringCmd, wrapperOptions);
     expect(wrapper.text()).toEqual("CmdTest blue");
   });
   test("cmd interaction", () => {
-    const wrapper = shallowMount(DefaultStringCmd, wrapperOptions);
+    const wrapper = mount(DefaultStringCmd, wrapperOptions);
     expect(mutations.addShowedCmd).toHaveBeenCalled();
   });
 });

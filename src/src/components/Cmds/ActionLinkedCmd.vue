@@ -42,7 +42,9 @@ export default {
     cmd: null
   },
   mounted() {
-    // Test if target state cmd is defined
+    // Test if target value cmd is defined
+    // If cmd.value is different of 0, the button the action is linked
+    // to another command
     if (this.cmd.value !== 0) {
       this.$store.commit("addAction", {
         genericType: this.cmd.genericType,

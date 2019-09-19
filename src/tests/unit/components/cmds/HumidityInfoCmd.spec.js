@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import HumidityInfoCmd from "@/components/Cmds/HumidityInfoCmd.vue";
 
@@ -36,11 +36,11 @@ describe("HumidityInfoCmd.vue", () => {
     propsData.cmd.value = 90;
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(HumidityInfoCmd, wrapperOptions);
+    const wrapper = mount(HumidityInfoCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
   test("icon initiliazation", () => {
-    const wrapper = shallowMount(HumidityInfoCmd, wrapperOptions);
+    const wrapper = mount(HumidityInfoCmd, wrapperOptions);
     expect(wrapper.vm.$data.icon).toBe("fa fa-tint");
   });
 });

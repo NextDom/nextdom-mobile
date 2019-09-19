@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import ConsumptionInfoCmd from "@/components/Cmds/ConsumptionInfoCmd.vue";
 
@@ -36,11 +36,11 @@ describe("ConsumptionInfoCmd.vue", () => {
     propsData.cmd.value = 90;
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(ConsumptionInfoCmd, wrapperOptions);
+    const wrapper = mount(ConsumptionInfoCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
   test("icon initiliazation", () => {
-    const wrapper = shallowMount(ConsumptionInfoCmd, wrapperOptions);
+    const wrapper = mount(ConsumptionInfoCmd, wrapperOptions);
     expect(wrapper.vm.$data.icon).toBe("fas fa-chart-area");
   });
 });

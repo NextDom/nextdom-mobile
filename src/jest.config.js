@@ -16,5 +16,6 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ["**/*.{js,vue}", "!**/node_modules/**"],
   coverageReporters: ["lcov", "text-summary"],
-  verbose: false
+  verbose: false,
+  setupFiles: ["jest-canvas-mock"]
 };

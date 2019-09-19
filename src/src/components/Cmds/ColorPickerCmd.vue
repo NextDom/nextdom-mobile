@@ -29,7 +29,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         v-bind:height="300"
         v-bind:disabled="false"
         startColor="#FFFFFF"
-        @colorChange="onColorChange"
+        @color-change="onColorChange"
       ></ColorPicker>
       <mu-button slot="actions" flat color="primary" v-on:click="closeColorChoice">Fermer</mu-button>
     </mu-dialog>

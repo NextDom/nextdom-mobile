@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import DefaultCmd from "@/components/Cmds/DefaultCmd.vue";
 import MuseUI from "muse-ui";
 
@@ -24,11 +24,11 @@ describe("DefaultCmd.vue", () => {
     jest.clearAllMocks();
   });
   test("is a Vue instance", () => {
-    const wrapper = shallowMount(DefaultCmd, wrapperOptions);
+    const wrapper = mount(DefaultCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
   test("render", () => {
-    const wrapper = shallowMount(DefaultCmd, wrapperOptions);
+    const wrapper = mount(DefaultCmd, wrapperOptions);
     expect(wrapper.text()).toEqual("CmdTest 90 72 true");
   });
 });
