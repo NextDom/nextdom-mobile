@@ -45,5 +45,6 @@ describe("DefaultStringCmd.vue", () => {
   test("cmd interaction", () => {
     const wrapper = mount(DefaultStringCmd, wrapperOptions);
     expect(mutations.addShowedCmd).toHaveBeenCalled();
+    expect(mutations.addShowedCmd.mock.calls[0][1].cmd.state).toBe("blue");
   });
 });

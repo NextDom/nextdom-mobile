@@ -43,6 +43,10 @@ export default {
   },
   mounted() {
     this.update();
+    this.$store.commit("addShowedCmd", {
+      cmd: this.cmd,
+      updateFunc: this.update
+    });
   },
   methods: {
     /**

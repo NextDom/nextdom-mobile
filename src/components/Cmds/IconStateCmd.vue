@@ -52,11 +52,10 @@ export default {
      * Called on update for change icon
      */
     update() {
-      console.log(this.cmd.cmdValue);
       if (this.cmd.cmdValue) {
-        this.icon = "nextdom-fenetre-ouverte";
+        this.icon = "fa fa-check";
       } else {
-        this.icon = "nextdom-fenetre-ferme";
+        this.icon = "fa fa-times";
       }
     }
   }

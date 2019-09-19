@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import ActionLinkedCmd from "@/components/Cmds/ActionLinkedCmd.vue";
+import DefaultActionCmd from "@/components/Cmds/DefaultActionCmd.vue";
 import MuseUI from "muse-ui";
 
 const localVue = createLocalVue();
@@ -32,30 +32,28 @@ const wrapperOptions = {
   },
   propsData: propsData
 };
-describe("ActionLinkedCmd.vue", () => {
+describe("DefaultActionCmd.vue", () => {
   afterEach(() => {
     jest.clearAllMocks();
-    propsData.cmd.value = 0;
   });
   test("is a Vue instance", () => {
-    const wrapper = mount(ActionLinkedCmd, wrapperOptions);
+    const wrapper = mount(DefaultActionCmd, wrapperOptions);
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
-  test("render direct button", () => {
-    const wrapper = mount(ActionLinkedCmd, wrapperOptions);
+  test("render content", () => {
+    const wrapper = mount(DefaultActionCmd, wrapperOptions);
     expect(wrapper.find("button").exists()).toBeTruthy();
+    expect(wrapper.text()).toBe("CmdTest");
+  });
+  test("event on mount", () => {
+    const wrapper = mount(DefaultActionCmd, wrapperOptions);
+    expect(mutations.addAction).toHaveBeenCalled();
+    expect(mutations.addAction.mock.calls[0][1].genericType).toBe("DONT");
   });
   test("click on button", () => {
-    const wrapper = mount(ActionLinkedCmd, wrapperOptions);
+    const wrapper = mount(DefaultActionCmd, wrapperOptions);
     wrapper.find("button").trigger("click");
     expect(wrapper.emitted().executeCmd).toBeTruthy();
     expect(wrapper.emitted().executeCmd[0][0]).toBe(22);
-  });
-  test("render indirect button", () => {
-    propsData.cmd.value = 99;
-    const wrapper = mount(ActionLinkedCmd, wrapperOptions);
-    expect(wrapper.find("button").exists()).toBeFalsy();
-    expect(mutations.addAction).toHaveBeenCalled();
-    expect(mutations.addAction.mock.calls[0][1].genericType).toBe("DONT");
   });
 });
