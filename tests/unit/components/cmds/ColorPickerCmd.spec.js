@@ -25,14 +25,13 @@ describe("ColorPickerCmd.vue", () => {
   });
   test("render only button", () => {
     const wrapper = mount(ColorPickerCmd, wrapperOptions);
-    console.log(wrapper.html());
     expect(wrapper.find("button").exists()).toBeTruthy();
     expect(wrapper.find("div.mu-dialog-wrapper").exists()).toBeFalsy();
   });
-  test("click on button", () => {
+  test("click on button and modal", () => {
     const wrapper = mount(ColorPickerCmd, wrapperOptions);
     wrapper.find("button").trigger("click");
     expect(wrapper.find("div.mu-dialog-wrapper").exists()).toBeTruthy();
-    console.log(wrapper.html());
+    expect(wrapper.find("canvas.farbtastic-overlay").exists()).toBeTruthy();
   });
 });
