@@ -15,7 +15,7 @@ module.exports = {
   testURL: "http://localhost/",
   watchPlugins: ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
   collectCoverage: true,
-  collectCoverageFrom: ["**/*.{js,vue}", "!**/node_modules/**", "!<rootDir>/*.js"],
+  collectCoverageFrom: ["**/*.{js,vue}", "!**/node_modules/**", "!<rootDir>/*.js", "!**/tests/*"],
   coverageReporters: ["lcov", "text-summary"],
   verbose: false,
   setupFiles: ["jest-canvas-mock"]
