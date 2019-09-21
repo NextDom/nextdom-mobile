@@ -49,7 +49,7 @@ export default {
       })
       .catch(error => {
         if (error.response !== undefined && error.response.status === 403) {
-          localStorage.setItem("token", null);
+          localStorage.removeItem("token");
           this.router.push("/login");
         } else {
           if (errorCallbackFunc !== undefined) {
@@ -151,9 +151,7 @@ export default {
         const nowTimestamp = now.valueOf();
         const timeDiff = nowTimestamp - tokenCreationDate;
         if (timeDiff / timestampToHours < this.tokenDuration) {
-          axios.defaults.headers.common["X-AUTH-TOKEN"] = localStorage.getItem(
-            "token"
-          );
+          axios.defaults.headers.common["X-AUTH-TOKEN"] = localStorage.getItem("token");
           this.connected = true;
         }
       }
