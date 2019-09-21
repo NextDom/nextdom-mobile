@@ -51,18 +51,21 @@ describe("LightStateCmd.vue", () => {
     const wrapper = mount(LightStateCmd, wrapperOptions);
     expect(wrapper.vm.$data.icon).toBe("nextdom-lumiere-off");
   });
-  test("cmd store interaction", () => {
+  test("store and click interaction", () => {
     const wrapper = mount(LightStateCmd, wrapperOptions);
-    expect(mutations.addShowedCmd).toHaveBeenCalled();
     const updateFunc = mutations.addShowedCmd.mock.calls[0][1].updateFunc;
+    expect(mutations.addShowedCmd).toHaveBeenCalled();
+
+    wrapper.find("i").trigger("click");
+    expect(wrapper.emitted().executeAction.length).toBe(1);
+    expect(wrapper.emitted().executeAction[0][1]).toBe("LIGHT_OFF");
+
     wrapper.setProps({ cmd: { state: false } });
     updateFunc();
     expect(wrapper.vm.$data.icon).toBe("nextdom-lumiere-off");
-  });
-  test("click interaction", () => {
-    const wrapper = mount(LightStateCmd, wrapperOptions);
+
     wrapper.find("i").trigger("click");
-    expect(wrapper.emitted().executeAction).toBeTruthy();
-    expect(wrapper.emitted().executeAction[0][1]).toBe("LIGHT_OFF");
+    expect(wrapper.emitted().executeAction.length).toBe(2);
+    expect(wrapper.emitted().executeAction[1][1]).toBe("LIGHT_ON");
   });
 });

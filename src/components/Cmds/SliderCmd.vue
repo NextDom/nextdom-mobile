@@ -25,7 +25,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       class="slider"
       v-bind:min="minValue"
       v-bind:max="maxValue"
-      v-model="sliderValue"
+      v-model="cmd.state"
       @change="sliderChange"
     ></mu-slider>
   </mu-container>
@@ -40,7 +40,6 @@ export default {
   name: "SliderCmd",
   data: function() {
     return {
-      sliderValue: 0,
       minValue: 0,
       maxValue: 100
     };
@@ -48,15 +47,6 @@ export default {
   props: {
     // Command object
     cmd: null
-  },
-  computed: {
-    /**
-     * @vuese
-     * Return parsed value
-     */
-    preparedValue() {
-      return parseInt(this.cmd.state);
-    }
   },
   mounted() {
     this.sliderValue = parseInt(this.cmd.state);

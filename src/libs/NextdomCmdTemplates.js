@@ -40,7 +40,6 @@ import RefreshCmd from "@/components/Cmds/RefreshCmd.vue";
 import SabotageInfoCmd from "@/components/Cmds/SabotageInfoCmd.vue";
 import SliderCmd from "@/components/Cmds/SliderCmd.vue";
 import TemperatureInfoCmd from "@/components/Cmds/TemperatureInfoCmd.vue";
-import TextStateCmd from "@/components/Cmds/TextStateCmd.vue";
 import WindowStateCmd from "@/components/Cmds/WindowStateCmd.vue";
 
 export default {
@@ -68,7 +67,6 @@ export default {
     RefreshCmd,
     SabotageInfoCmd,
     TemperatureInfoCmd,
-    TextStateCmd,
     WindowStateCmd
   },
   cmds: {

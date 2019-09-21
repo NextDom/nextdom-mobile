@@ -57,5 +57,9 @@ describe("LineStateCmd.vue", () => {
     const wrapper = mount(LineStateCmd, wrapperOptions);
     expect(mutations.addShowedCmd).toHaveBeenCalled();
     expect(mutations.addShowedCmd.mock.calls[0][1].cmd.id).toBe(12);
+    wrapper.setProps({ cmd: { state: false } });
+    const updateFunc = mutations.addShowedCmd.mock.calls[0][1].updateFunc;
+    updateFunc();
+    expect(wrapper.vm.$data.icon).toBe("fa-times");
   });
 });
