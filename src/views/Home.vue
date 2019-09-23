@@ -108,9 +108,9 @@ export default {
           }
           return 0;
         });
-        // Start update loop
-        EventsManager.loop();
       }
+      // Start update loop
+      EventsManager.loop();
     }
   }
 };

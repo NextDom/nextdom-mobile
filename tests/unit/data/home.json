@@ -1,0 +1,147 @@
+{
+  "id": "1",
+  "name": "Maison",
+  "icon": "",
+  "children": [
+    {
+      "id": "2",
+      "name": "Salon",
+      "icon": "",
+      "eqLogics": [
+        {
+          "id": "3",
+          "name": "Gateway Xiaomi",
+          "type": "xiaomihome",
+          "objectId": "6",
+          "enable": true,
+          "visible": true,
+          "configuration": {
+            "sid": "7c39ebb0c37c",
+            "type": "aquara",
+            "model": "gateway",
+            "short_id": "0",
+            "gateway": "192.168.72.72",
+            "applyDevice": "gateway",
+            "createtime": "2019-01-20 10:31:51",
+            "applyDevice2": "",
+            "updatetime": "2019-09-22 21:17:20",
+            "ipwifi": "",
+            "password": "80yhepqkkrn4pwzd"
+          },
+          "cmds": [
+            {
+              "id": "4",
+              "name": "On",
+              "type": "action",
+              "subType": "other",
+              "icon": "\u003Ci class=\u0022fa fa-sun-o\u0022\u003E\u003C/i\u003E",
+              "genericType": null,
+              "logicalId": "on",
+              "template": "",
+              "cmdValue": {
+                "_collectDate": "",
+                "_valueDate": "",
+                "_eqLogic": null,
+                "_needRefreshWidget": null,
+                "_needRefreshAlert": null
+              },
+              "value": "2583",
+              "visible": "1",
+              "unite": "",
+              "minValue": "",
+              "maxValue": ""
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Ouverture Principale",
+          "type": "xiaomihome",
+          "objectId": "6",
+          "enable": true,
+          "visible": true,
+          "configuration": {
+            "sid": "158d0301ab2e32",
+            "type": "aquara",
+            "model": "sensor_magnet.aq2",
+            "battery_type": "1x3V CR1632",
+            "short_id": "32518",
+            "gateway": "192.168.72.72",
+            "applyDevice": "sensor_magnet.aq2",
+            "createtime": "2018-06-07 18:24:01",
+            "applyDevice2": "",
+            "updatetime": "2019-09-22 21:17:20",
+            "ipwifi": "",
+            "password": "",
+            "battery": 81
+          },
+          "cmds": [
+            {
+              "id": "6",
+              "name": "Absence de fermeture",
+              "type": "info",
+              "subType": "numeric",
+              "icon": "",
+              "genericType": "GENERIC",
+              "logicalId": "no_close",
+              "template": "line",
+              "cmdValue": false,
+              "value": 0,
+              "visible": "0",
+              "unite": "",
+              "state": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Salle de Bain",
+      "icon": "",
+      "eqLogics": [
+        {
+          "id": "8",
+          "name": "Ouverture fenetre",
+          "type": "xiaomihome",
+          "objectId": "8",
+          "enable": true,
+          "visible": true,
+          "configuration": {
+            "sid": "158d000951ea57",
+            "type": "aquara",
+            "model": "sensor_magnet.aq2",
+            "battery_type": "1x3V CR1632",
+            "short_id": "28919",
+            "gateway": "192.168.72.72",
+            "applyDevice": "sensor_magnet.aq2",
+            "createtime": "2018-11-16 11:03:51",
+            "applyDevice2": "",
+            "updatetime": "2019-09-22 21:17:21",
+            "ipwifi": "",
+            "password": "",
+            "battery": 78,
+            "batterytime": "2019-06-08 16:44:03"
+          },
+          "cmds": [
+            {
+              "id": "9",
+              "name": "Absence de fermeture",
+              "type": "info",
+              "subType": "numeric",
+              "icon": "",
+              "genericType": "GENERIC",
+              "logicalId": "no_close",
+              "template": "line",
+              "cmdValue": false,
+              "value": 0,
+              "visible": "0",
+              "unite": "",
+              "state": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

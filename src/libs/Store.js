@@ -34,7 +34,9 @@ export const store = new Vuex.Store({
     // List of eqLogics
     eqLogicsList: {},
     // EqLogics position
-    eqLogicsOrder: undefined
+    eqLogicsOrder: undefined,
+    // Event manager state
+    eventManagerStarted: false
   },
   mutations: {
     /**
@@ -116,7 +118,7 @@ export const store = new Vuex.Store({
             toShow += " - CmdValue : " + cmd.cmdValue;
           }
           toShow += " - State : " + cmd.state;
-          console.log(toShow);
+          //console.log(toShow);
           // No data found
           componentData = {
             component: "DefaultCmd",
@@ -149,6 +151,14 @@ export const store = new Vuex.Store({
           state.showedCmds[payload.cmdId].updateFunc();
         }
       }
+    },
+    /**
+     * Update eventsManager loop state
+     * @param {*} state Store access
+     * @param {*} newEventManagerState New state
+     */
+    setEventsManagerState(state, newEventManagerState) {
+      state.eventManagerStarted = newEventManagerState;
     },
     /**
      * Add action (genericType) on command (cmdValue) from other command (cmdId)
@@ -209,6 +219,12 @@ export const store = new Vuex.Store({
      */
     getEqLogicsOrder: state => payload => {
       return state.eqLogicsOrder;
+    },
+    /**
+     * Get event manager state
+     */
+    isEventsManagerStarted: state => () => {
+      return state.eventManagerStarted;
     }
   }
 });

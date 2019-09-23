@@ -32,7 +32,8 @@ export default {
    * Call getNewEvents in background
    */
   loop() {
-    if (!this.loopStarted) {
+    if (!this.store.getters.isEventsManagerStarted()) {
+      this.store.commit("setEventsManagerState", true);
       let self = this;
       setTimeout(function() {
         self.getNewEvents();
@@ -45,10 +46,7 @@ export default {
   getNewEvents() {
     const currentDate = new Date();
     const timestamp = parseInt(currentDate.getTime() / 1000);
-    this.Communication.get(
-      "/api/changes/get/" + timestamp,
-      this.dispatchEvents.bind(this)
-    );
+    this.Communication.get("/api/changes/get/" + timestamp, this.dispatchEvents.bind(this));
   },
   /**
    * Dispatch all events for update
