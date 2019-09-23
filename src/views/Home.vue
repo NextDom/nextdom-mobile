@@ -39,7 +39,8 @@ export default {
   name: "Home",
   data: function() {
     return {
-      roomData: null
+      roomData: null,
+      eqLogicsOrder: {}
     };
   },
   props: {
@@ -88,18 +89,21 @@ export default {
      * @arg data Rooms tree from root room
      */
     initData(data) {
-      this.roomData = data;
-      const eqLogicsOrder = this.$store.getters.getEqLogicsOrder();
-      // Sort list with user preferences
-      if (this.roomData.hasOwnProperty("eqLogics")) {
-        this.roomData.eqLogics = this.roomData.eqLogics.sort((a, b) => {
+      this.eqLogicsOrder = this.$store.getters.getEqLogicsOrder();
+      this.roomData = this.sortEqLogics(data);
+      // Start update loop
+      EventsManager.loop();
+    },
+    sortEqLogics(data) {
+      if (data.hasOwnProperty("eqLogics")) {
+        data.eqLogics = data.eqLogics.sort((a, b) => {
           let posA = 99999;
           let posB = 99999;
-          if (eqLogicsOrder.hasOwnProperty(a.id)) {
-            posA = eqLogicsOrder[a.id];
+          if (this.eqLogicsOrder.hasOwnProperty(a.id)) {
+            posA = this.eqLogicsOrder[a.id];
           }
-          if (eqLogicsOrder.hasOwnProperty(b.id)) {
-            posB = eqLogicsOrder[b.id];
+          if (this.eqLogicsOrder.hasOwnProperty(b.id)) {
+            posB = this.eqLogicsOrder[b.id];
           }
           if (posA < posB) {
             return -1;
@@ -109,8 +113,18 @@ export default {
           return 0;
         });
       }
-      // Start update loop
-      EventsManager.loop();
+      if (data.hasOwnProperty("children")) {
+        for (
+          let childrenIndex = 0;
+          childrenIndex < data.children.length;
+          ++childrenIndex
+        ) {
+          data.children[childrenIndex] = this.sortEqLogics(
+            data.children[childrenIndex]
+          );
+        }
+      }
+      return data;
     }
   }
 };

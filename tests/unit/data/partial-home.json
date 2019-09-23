@@ -1,0 +1,52 @@
+{
+  "id": "2",
+  "name": "Room",
+  "icon": "",
+  "eqLogics": [
+    {
+      "id": "3",
+      "name": "Gateway Xiaomi",
+      "type": "xiaomihome",
+      "objectId": "6",
+      "enable": true,
+      "visible": true,
+      "configuration": {
+        "sid": "7c39ebb0c37c",
+        "type": "aquara",
+        "model": "gateway",
+        "short_id": "0",
+        "gateway": "192.168.72.72",
+        "applyDevice": "gateway",
+        "createtime": "2019-01-20 10:31:51",
+        "applyDevice2": "",
+        "updatetime": "2019-09-22 21:17:20",
+        "ipwifi": "",
+        "password": "80yhepqkkrn4pwzd"
+      },
+      "cmds": [
+        {
+          "id": "4",
+          "name": "On",
+          "type": "action",
+          "subType": "other",
+          "icon": "\u003Ci class=\u0022fa fa-sun-o\u0022\u003E\u003C/i\u003E",
+          "genericType": null,
+          "logicalId": "on",
+          "template": "",
+          "cmdValue": {
+            "_collectDate": "",
+            "_valueDate": "",
+            "_eqLogic": null,
+            "_needRefreshWidget": null,
+            "_needRefreshAlert": null
+          },
+          "value": "2583",
+          "visible": "1",
+          "unite": "",
+          "minValue": "",
+          "maxValue": ""
+        }
+      ]
+    }
+  ]
+}
