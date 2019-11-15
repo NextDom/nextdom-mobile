@@ -60,6 +60,11 @@ export default {
           cmdId: parseInt(event.option.cmd_id),
           newState: event.option.value
         });
+      } else if (event.name === "scenario::update") {
+        this.store.commit("updateScenario", {
+          scenarioId: parseInt(event.option.scenario_id),
+          newState: event.option.state
+        });
       }
     });
     this.loop();

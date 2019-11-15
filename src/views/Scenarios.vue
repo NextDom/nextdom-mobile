@@ -41,13 +41,27 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           slot="nested"
           v-for="scenario in scenarios[groupName]"
           v-bind:key="scenario.id"
+          v-bind:id="'scenario-' + scenario.id"
         >
           <mu-list-item-action>
             <i v-bind:class="scenarioIcon(scenario)"></i>
           </mu-list-item-action>
           <mu-list-item-title>{{ scenario.name }}</mu-list-item-title>
           <mu-list-item-action>
-            <mu-icon size="24" value="play_circle_filled" v-on:click="launch(scenario.id)"></mu-icon>
+            <div>
+              <mu-icon
+                size="24"
+                v-bind:value="activeStateIcon(scenario.active)"
+                v-on:click="changeActiveState(scenario.id, !scenario.active)"
+                class="scenario-active"
+              ></mu-icon>
+              <mu-icon
+                class="scenario-state"
+                size="24"
+                v-bind:value="stateIcon(scenario.state, scenario.active)"
+                v-on:click="launch(scenario.id)"
+              ></mu-icon>
+            </div>
           </mu-list-item-action>
         </mu-list-item>
       </mu-list-item>
@@ -58,6 +72,8 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 <script>
 import Communication from "../libs/Communication.js";
 import Utils from "@/libs/Utils.js";
+import AppEventsBus from "@/libs/AppEventsBus";
+import EventsManager from "@/libs/EventsManager.js";
 
 /**
  * Show all scenarios
@@ -68,7 +84,8 @@ export default {
   data: function() {
     return {
       scenarios: null,
-      groupsListState: []
+      groupsListState: [],
+      scenariosGroupLink: []
     };
   },
   computed: {
@@ -105,6 +122,7 @@ export default {
     Communication.get("/api/scenario/all/by_group", result => {
       // Restore last list state
       for (let groupName in result) {
+        // Hide group like previous
         const showGroup = localStorage.getItem(
           "scenario-group-show-" + groupName
         );
@@ -115,6 +133,22 @@ export default {
         }
       }
       this.scenarios = result;
+      EventsManager.loop();
+      // If do before, problem on render
+      for (let groupName in this.scenarios) {
+        for (let scenarioIndex in this.scenarios[groupName]) {
+          // Retrieve scenario group name from scenario id
+          const scenario = this.scenarios[groupName][scenarioIndex];
+          this.scenariosGroupLink[scenario.id] = {
+            index: scenarioIndex,
+            group: groupName
+          };
+          this.$store.commit("addShowedScenario", {
+            scenario: scenario,
+            updateFunc: this.update
+          });
+        }
+      }
     });
   },
   methods: {
@@ -136,7 +170,10 @@ export default {
      * @arg Id of the scenario to launch
      */
     launch: function(scenarioId) {
-      Communication.post("/api/scenario/launch/" + scenarioId);
+      const scenario = this.getScenario(scenarioId);
+      if (scenario.state != "in progress" && scenario.active === true) {
+        Communication.post("/api/scenario/launch/" + scenarioId);
+      }
     },
     /**
      * @vuese
@@ -145,6 +182,64 @@ export default {
      */
     scenarioIcon: function(scenario) {
       return Utils.extractIcon(scenario.displayIcon, "fas fa-film");
+    },
+    /**
+     * @vuese
+     * Launch scenario
+     * @arg Id of the scenario to launch
+     */
+    changeActiveState: function(scenarioId, newState) {
+      let url = "/api/scenario/enable/";
+      if (!newState) {
+        url = "/api/scenario/disable/";
+      }
+      Communication.post(url + scenarioId, result => {
+        if (!result.data) {
+          AppEventsBus.$emit("showError", this.$t("execError"));
+        } else {
+          const scenario = this.getScenario(scenarioId);
+          scenario.active = !scenario.active;
+        }
+      });
+    },
+    /**
+     * @vuese
+     * Obtain scenario from his id
+     * @arg scenarioId
+     */
+    getScenario: function(scenarioId) {
+      const scenarioLocation = this.scenariosGroupLink[scenarioId];
+      return this.scenarios[scenarioLocation.group][scenarioLocation.index];
+    },
+    /**
+     * @vuese
+     * Update scenario state
+     * @arg scenarioId
+     * @arg newState
+     */
+    update: function(scenarioId, newState) {
+      const scenario = this.getScenario(scenarioId);
+      scenario.state = newState;
+    },
+    stateIcon: function(state, activeState) {
+      if (activeState) {
+        if (state == "in progress") {
+          return "sync";
+        }
+        return "play_circle_filled";
+      }
+      return "block";
+    },
+    /**
+     * @vuese
+     * Get active state icon
+     */
+    activeStateIcon: function(scenarioActiveState) {
+      if (scenarioActiveState) {
+        return "check";
+      } else {
+        return "block";
+      }
     }
   }
 };
@@ -153,6 +248,9 @@ export default {
 <style scoped lang="scss">
 .mu-item-action i {
   font-size: 1.4rem;
+}
+.mu-item-action > div > i:first-child {
+  margin-right: 0.2rem;
 }
 </style>
 

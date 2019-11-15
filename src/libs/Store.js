@@ -27,6 +27,8 @@ export const store = new Vuex.Store({
   state: {
     // List of showed commands
     showedCmds: [],
+    // List of showed scenarios
+    showedScenarios: [],
     // List of actions
     actionsList: {},
     // List component data by command id
@@ -139,6 +141,15 @@ export const store = new Vuex.Store({
       state.showedCmds[payload.cmd.id]["updateFunc"] = payload.updateFunc;
     },
     /**
+     * Add showed command in list for updates
+     * @param {*} state Store access
+     * @param {Object} payload Command object and updateFunc {scenario, updateFunc}
+     */
+    addShowedScenario(state, payload) {
+      state.showedScenarios[payload.scenario.id] = payload.scenario;
+      state.showedScenarios[payload.scenario.id]["updateFunc"] = payload.updateFunc;
+    },
+    /**
      * Update command state
      * @param {*} state Store access
      * @param {*} payload Data to update {cmdId, newState}
@@ -149,6 +160,20 @@ export const store = new Vuex.Store({
         // Call update function if exists
         if (state.showedCmds[payload.cmdId].updateFunc !== undefined) {
           state.showedCmds[payload.cmdId].updateFunc();
+        }
+      }
+    },
+    /**
+     * Update scenario state
+     * @param {*} state Store access
+     * @param {*} payload Data to update {scenarioId, newState}
+     */
+    updateScenario(state, payload) {
+      if (state.showedScenarios[payload.scenarioId] !== undefined) {
+        state.showedScenarios[payload.scenarioId].state = payload.newState;
+        // Call update function if exists
+        if (state.showedScenarios[payload.scenarioId].updateFunc !== undefined) {
+          state.showedScenarios[payload.scenarioId].updateFunc(payload.scenarioId, payload.newState);
         }
       }
     },
