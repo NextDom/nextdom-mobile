@@ -56,7 +56,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
             v-on:update="saveOrderData"
           >
             <div v-for="eqLogic in eqLogics" v-bind:key="eqLogic.id">
-              <span>{{eqLogic.name}} {{ eqLogic.id }}</span>
+              <span v-on:click="showCommandsDialog(eqLogic.id)">{{eqLogic.name}}</span>
               <mu-icon class="draggable-handle" value="drag_handle"></mu-icon>
               <mu-list-item-action v-on:click="changeEqLogicVisibility(eqLogic.id)">
                 <mu-icon v-bind:data-id="eqLogic.id" v-bind:value="eqLogicsVisibility[eqLogic.id]"></mu-icon>
@@ -66,6 +66,21 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         </mu-expansion-panel>
       </mu-container>
     </template>
+    <mu-dialog title="Phone Ringtone" width="360" scrollable v-bind:open.sync="cmdDialogShowed">
+      <mu-list>
+        <div v-for="cmd in cmdsToShow" v-bind:key="cmd.id">
+          <mu-list-item-action>
+            <mu-checkbox
+              v-model="cmdsToShowForm.checkbox"
+              v-bind:label="cmd.name"
+              v-bind:value="cmd.id"
+              v-on:click="updateCommand()"
+            ></mu-checkbox>
+          </mu-list-item-action>
+        </div>
+      </mu-list>
+      <mu-button slot="actions" flat color="primary" v-on:click="closeCommandsDialog">ok</mu-button>
+    </mu-dialog>
   </mu-container>
 </template>
 
@@ -88,7 +103,12 @@ export default {
       },
       eqLogicsVisibility: {},
       eqLogics: [],
-      orderData: {}
+      orderData: {},
+      cmdDialogShowed: false,
+      cmdsToShow: [],
+      cmdsToShowForm: {
+        checkbox: []
+      }
     };
   },
   props: {
@@ -245,6 +265,51 @@ export default {
       }
       // Hack for DOM update with data change
       this.eqLogicsVisibility = Object.assign({}, temp);
+    },
+    /**
+     * @vuese
+     * Show commands dialog
+     * @arg eqLogicId
+     */
+    showCommandsDialog: function(eqLogicId) {
+      Communication.get("/api/cmd/eqlogic/" + eqLogicId, data => {
+        this.cmdsToShowForm.checkbox = [];
+        for (let cmdIndex in data) {
+          const cmd = data[cmdIndex];
+          let isVisibleStoredValue = localStorage.getItem(
+            "is-visible-cmd-" + cmd.id
+          );
+          if (
+            isVisibleStoredValue === null ||
+            (isVisibleStoredValue !== null && isVisibleStoredValue === "true")
+          ) {
+            this.cmdsToShowForm.checkbox.push(cmd.id);
+          }
+        }
+        this.cmdsToShow = data;
+        this.cmdDialogShowed = true;
+      });
+    },
+    /**
+     * @vuese
+     * Hide commands dialog
+     */
+    closeCommandsDialog: function() {
+      this.cmdDialogShowed = false;
+    },
+    /**
+     * Update showed commands
+     */
+    updateCommand: function() {
+      for (let cmdIndex in this.cmdsToShow) {
+        const cmd = this.cmdsToShow[cmdIndex];
+        localStorage.setItem("is-visible-cmd-" + cmd.id, "false");
+      }
+      for (let cmdIndex in this.cmdsToShowForm.checkbox) {
+        const cmd = this.cmdsToShowForm.checkbox[cmdIndex];
+        localStorage.setItem("is-visible-cmd-" + cmd, "true");
+      }
+      return true;
     }
   }
 };
@@ -316,5 +381,10 @@ h2 {
 .draggable-list > div .draggable-handle {
   float: right;
   line-height: 2rem;
+}
+
+.mu-checkbox {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 </style>

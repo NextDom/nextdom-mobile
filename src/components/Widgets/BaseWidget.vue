@@ -52,7 +52,17 @@ export default {
   },
   // Inject all commands components
   components: Object.assign(CmdTemplates.components, {}),
-
+  computed: {
+    iconCmdsToShow: function() {
+      return this.getCmdsToShowFromArray(this.iconCmds);
+    },
+    dataCmdsToShow: function() {
+      return this.getCmdsToShowFromArray(this.dataCmds);
+    },
+    buttonCmdsToShow: function() {
+      return this.getCmdsToShowFromArray(this.buttonCmds);
+    }
+  },
   /**
    * Initialize cmd component data on create
    */
@@ -143,6 +153,26 @@ export default {
      */
     setRefreshCommand: function(cmdId) {
       this.refreshCmdId = cmdId;
+    },
+    /**
+     * @vuese
+     * Get list of cmds to show depends of the user choice
+     * @arg cmdsList List of cmds to test
+     */
+    getCmdsToShowFromArray(cmdsList) {
+      const result = [];
+      for (let cmdIndex in cmdsList) {
+        const cmdShowState = localStorage.getItem(
+          "is-visible-cmd-" + cmdsList[cmdIndex].id
+        );
+        if (
+          cmdShowState === null ||
+          (cmdShowState !== null && cmdShowState === "true")
+        ) {
+          result.push(cmdsList[cmdIndex]);
+        }
+      }
+      return result;
     }
   }
 };

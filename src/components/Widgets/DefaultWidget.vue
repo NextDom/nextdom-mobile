@@ -41,7 +41,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       <component
         v-bind:cmd="cmd"
         v-bind:key="cmd.id"
-        v-for="cmd in iconCmds"
+        v-for="cmd in iconCmdsToShow"
         v-bind:is="getCmdComponent(cmd.id)"
         v-on:executeAction="executeAction"
       ></component>
@@ -50,7 +50,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       <component
         v-bind:cmd="cmd"
         v-bind:key="cmd.id"
-        v-for="cmd in buttonCmds"
+        v-for="cmd in buttonCmdsToShow"
         v-bind:is="getCmdComponent(cmd.id)"
         v-on:executeAction="executeAction"
         v-on:executeCmd="executeCmd"
@@ -61,7 +61,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       <component
         v-bind:cmd="cmd"
         v-bind:key="cmd.id"
-        v-for="cmd in dataCmds"
+        v-for="cmd in dataCmdsToShow"
         v-bind:is="getCmdComponent(cmd.id)"
         v-on:executeAction="executeAction"
         v-on:executeCmd="executeCmd"
