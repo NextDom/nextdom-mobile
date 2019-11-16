@@ -6,6 +6,19 @@ cache:
     - src/node_modules
 script:
   - npm run test:unit
+  - npm run build
+  - COMMIT=$(git rev-parse HEAD)
+  - git clone https://github.com/NextDom/nextdom-mobile-dist
+  - cd nextdom-mobile-dist
+  - rm -fr *
+  - cp -fr ../dist/* .
+  - git add *
+  - git status
+  - git commit -m "Automatic build : ${COMMIT}"
+  - git push "https://${GITHUB_TOKEN}@github.com/NextDom/nextdom-mobile-dist.git"
 after_script:
   - npm install coveralls
   - cat ./coverage/lcov.info | coveralls
+env:
+  global:
+    - secure: "Jld7oJokPuHsp27e+54GcQZ6MMM0lyiVD3NCdak3vSizy45WAIuajBxFX1LOwY0iqj/E0kMFjwfWtSRRBroyzmA1JsIuQuf6iq7TlXfJXPDgb4/YCkdjSpoRQLlNTFXCIVgjPKIbjyDShkOdB4gh9WgGMf0Cf+DkwfwyqXGyc5/087jVeLRMdK9UNbiMX1SDcIhzd22liBwzdIlZzv0v2oNHqRgeRf8ZHCUkueKfDg9/DVt8SbLRoryJoX/g1ADQ7IcHYnbJ0PoK0ZV4lvZRgDcP1M6hwyh8JAjgcKUmF7vS+GYNcyJuSMpGbIOgpxTNuVNFW/fcwoIVFku3n/FJDsxHhPvB9oauYjtxZecOXcqDrphwPudt63DYDkCQylgVZ4SGF8AP0K6ZL4ppyjoNXTD9lTN8kDE/5Oi4XuSLYUJHOGhB9JZOB7mpjgoDVARgGlLhvuWxcsqEW6y832HraVSjDosdFDmmUVPIFjPpmBWRkFZnwHyVsDVmWiUuXglBmsgPgBsBeSb4G+ofR3bsSDJ5acZnHfOQymphpSXQXUo+KeERSuc91BXimhJowWw8NSpbn0w2KW2mWGQl5uGZIBaXQ2bShl7pL5xOAIaJY1/OALYTxDO+lyFY9W0oFwkgoJLK71elpIrVZVywaMGdrLs1Gyq9wWAZXsjgJou+pLY="
