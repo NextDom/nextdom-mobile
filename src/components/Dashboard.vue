@@ -27,7 +27,13 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         {{ roomData.name }}
       </h2>
       <!-- eqLogics of the room -->
-      <div v-packery="{itemSelector: '.packery-item', percentPosition: true, initLayout: true}">
+      <div
+        v-packery="{
+          itemSelector: '.packery-item',
+          percentPosition: true,
+          initLayout: true
+        }"
+      >
         <template v-for="eqLogic in roomData.eqLogics">
           <component
             v-bind:is="getWidgetComponent(eqLogic.type)"

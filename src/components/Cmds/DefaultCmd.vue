@@ -19,10 +19,9 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <mu-container
-    class="default-cmd cmd"
-    style="color: red"
-  >{{ cmd.name }} {{ cmd.value }} {{ cmd.id }} {{ cmd.visible }}</mu-container>
+  <mu-container class="default-cmd cmd" style="color: red"
+    >{{ cmd.name }} {{ cmd.value }} {{ cmd.id }} {{ cmd.visible }}</mu-container
+  >
 </template>
 
 <script>

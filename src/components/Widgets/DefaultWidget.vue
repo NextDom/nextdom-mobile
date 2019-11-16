@@ -19,7 +19,11 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div v-packery-item class="packery-item" v-bind:class="[isLargeWidget ? 'large' : 'small']">
+  <div
+    v-packery-item
+    class="packery-item"
+    v-bind:class="[isLargeWidget ? 'large' : 'small']"
+  >
     <div class="widget-title">
       <span class="title">{{ eqLogic.name }}</span>
       <span class="actions pull-right">
@@ -37,7 +41,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         </mu-button>
       </span>
     </div>
-    <div class="cmds-icon" v-bind:class="{ 'half-size': largeWidget}">
+    <div class="cmds-icon" v-bind:class="{ 'half-size': largeWidget }">
       <component
         v-bind:cmd="cmd"
         v-bind:key="cmd.id"

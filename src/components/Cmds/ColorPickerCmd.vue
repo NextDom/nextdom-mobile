@@ -23,7 +23,12 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
     <mu-button v-on:click="openColorChoice">
       <mu-icon value="color_lens"></mu-icon>
     </mu-button>
-    <mu-dialog title="Couleur" width="100%" max-width="100%" v-bind:open.sync="colorChoice">
+    <mu-dialog
+      title="Couleur"
+      width="100%"
+      max-width="100%"
+      v-bind:open.sync="colorChoice"
+    >
       <ColorPicker
         v-bind:width="300"
         v-bind:height="300"
@@ -31,7 +36,13 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         startColor="#FFFFFF"
         @color-change="onColorChange"
       ></ColorPicker>
-      <mu-button slot="actions" flat color="primary" v-on:click="closeColorChoice">Fermer</mu-button>
+      <mu-button
+        slot="actions"
+        flat
+        color="primary"
+        v-on:click="closeColorChoice"
+        >Fermer</mu-button
+      >
     </mu-dialog>
   </div>
 </template>

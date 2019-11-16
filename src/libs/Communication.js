@@ -151,7 +151,9 @@ export default {
         const nowTimestamp = now.valueOf();
         const timeDiff = nowTimestamp - tokenCreationDate;
         if (timeDiff / timestampToHours < this.tokenDuration) {
-          axios.defaults.headers.common["X-AUTH-TOKEN"] = localStorage.getItem("token");
+          axios.defaults.headers.common["X-AUTH-TOKEN"] = localStorage.getItem(
+            "token"
+          );
           this.connected = true;
         }
       }

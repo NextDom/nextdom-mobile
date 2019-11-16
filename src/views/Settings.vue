@@ -20,31 +20,51 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global settings">
-    <h1>{{ $t('settingsTitle') }}</h1>
+    <h1>{{ $t("settingsTitle") }}</h1>
     <mu-button id="disconnect-button" color="primary" v-on:click="disconnect">
       <mu-icon left value="lock_open"></mu-icon>
-      {{ $t('disconnect') }}
+      {{ $t("disconnect") }}
     </mu-button>
-    <mu-button id="force-desktop-button" color="secondary" v-on:click="forceDesktop()">
+    <mu-button
+      id="force-desktop-button"
+      color="secondary"
+      v-on:click="forceDesktop()"
+    >
       <mu-icon left value="desktop_mac"></mu-icon>
-      {{ $t('desktopVersion') }}
+      {{ $t("desktopVersion") }}
     </mu-button>
     <mu-expansion-panel>
       <div slot="header">
         <i class="fa fa-cogs"></i>
-        {{ $t('advancedFeatures') }}
+        {{ $t("advancedFeatures") }}
       </div>
-      <mu-button id="show-logs" color="primary" v-on:click="showLogsListDialog">{{ $t('showLogs') }}</mu-button>
+      <mu-button
+        id="show-logs"
+        color="primary"
+        v-on:click="showLogsListDialog"
+        >{{ $t("showLogs") }}</mu-button
+      >
     </mu-expansion-panel>
-    <mu-dialog transition="slide-bottom" scrollable fullscreen v-bind:open.sync="logDialogOpened">
+    <mu-dialog
+      transition="slide-bottom"
+      scrollable
+      fullscreen
+      v-bind:open.sync="logDialogOpened"
+    >
       <mu-appbar color="primary" v-bind:title="currentLogFile">
         <mu-button slot="left" icon v-on:click="closeLogDialog">
           <mu-icon value="close"></mu-icon>
         </mu-button>
       </mu-appbar>
-      <pre v-for="(logLine, index) in logContent" v-bind:key="index">{{ logLine }}</pre>
+      <pre v-for="(logLine, index) in logContent" v-bind:key="index">{{
+        logLine
+      }}</pre>
     </mu-dialog>
-    <mu-dialog transition="slide-bottom" scrollable v-bind:open.sync="logsListDialogOpened">
+    <mu-dialog
+      transition="slide-bottom"
+      scrollable
+      v-bind:open.sync="logsListDialogOpened"
+    >
       <mu-appbar color="primary" v-bind:title="$t('showLogs')">
         <mu-button slot="left" icon v-on:click="closeLogsListDialog">
           <mu-icon value="close"></mu-icon>

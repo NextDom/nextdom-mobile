@@ -14,7 +14,7 @@ script:
   - cp -fr ../dist/* .
   - git add *
   - git status
-  - git commit -m "Automatic build : ${COMMIT}"
+  - git commit -m "Automatic build $COMMIT"
   - git push "https://${GITHUB_TOKEN}@github.com/NextDom/nextdom-mobile-dist.git"
 after_script:
   - npm install coveralls
