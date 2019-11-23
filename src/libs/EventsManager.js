@@ -52,7 +52,10 @@ export default {
   getNewEvents() {
     const currentDate = new Date();
     const timestamp = parseInt(currentDate.getTime() / 1000);
-    this.Communication.get("/api/changes/get/" + timestamp, this.dispatchEvents.bind(this));
+    this.Communication.get(
+      "/api/changes/get/" + timestamp,
+      this.dispatchEvents.bind(this)
+    );
   },
   /**
    * Dispatch all events for update

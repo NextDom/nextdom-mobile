@@ -42,23 +42,29 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       <tr>
         <td></td>
         <td v-for="(conditionId, index) in conditionsId" v-bind:key="index">
-          <i v-if="index > 0" class="icon" v-bind:class="getIconFromCondition(conditionId.state)"></i>
+          <i
+            v-if="index > 0"
+            class="icon"
+            v-bind:class="getIconFromCondition(conditionId.state)"
+          ></i>
         </td>
       </tr>
       <tr>
-        <td>{{ $t('min') }}</td>
+        <td>{{ $t("min") }}</td>
         <td v-for="(conditionId, index) in conditionsId" v-bind:key="index">
-          <div
-            v-if="index > 0"
-          >{{ temperature.min[index].state }} {{ temperature.min[index].unite }}</div>
+          <div v-if="index > 0">
+            {{ temperature.min[index].state }}
+            {{ temperature.min[index].unite }}
+          </div>
         </td>
       </tr>
       <tr>
-        <td>{{ $t('max') }}</td>
+        <td>{{ $t("max") }}</td>
         <td v-for="(conditionId, index) in conditionsId" v-bind:key="index">
-          <div
-            v-if="index > 0"
-          >{{ temperature.max[index].state }} {{ temperature.min[index].unite }}</div>
+          <div v-if="index > 0">
+            {{ temperature.max[index].state }}
+            {{ temperature.min[index].unite }}
+          </div>
         </td>
       </tr>
     </table>

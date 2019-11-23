@@ -20,53 +20,90 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global rooms">
-    <h1>{{ $t('roomsTitle') }}</h1>
+    <h1>{{ $t("roomsTitle") }}</h1>
     <template v-if="room">
       <mu-container class="button-wrapper">
-        <mu-button class="pull-left" color="primary" v-bind:to="fatherLink" v-if="showFatherLink">
+        <mu-button
+          class="pull-left"
+          color="primary"
+          v-bind:to="fatherLink"
+          v-if="showFatherLink"
+        >
           <mu-icon left value="chevron_left"></mu-icon>
-          <template v-if="room.father !== undefined">{{ room.father.name}}</template>
-          <template v-else>Racine</template>
+          <template v-if="room.father !== undefined">{{
+            room.father.name
+          }}</template>
+          <template v-else
+            >Racine</template
+          >
         </mu-button>
-        <mu-button class="pull-right" color="secondary" v-bind:to="viewLink" v-if="room.id">
+        <mu-button
+          class="pull-right"
+          color="secondary"
+          v-bind:to="viewLink"
+          v-if="room.id"
+        >
           <mu-icon left value="pageview"></mu-icon>
-          {{ $t('summary')}}
+          {{ $t("summary") }}
         </mu-button>
       </mu-container>
       <h2 v-if="room.id">{{ room.name }}</h2>
       <mu-grid-list v-bind:cols="3" v-bind:padding="0">
-        <RoomWidget v-for="child in room.children" v-bind:key="child.id" v-bind:room="child"></RoomWidget>
+        <RoomWidget
+          v-for="child in room.children"
+          v-bind:key="child.id"
+          v-bind:room="child"
+        ></RoomWidget>
       </mu-grid-list>
       <mu-container class="room-config" v-if="room.id">
         <mu-expansion-panel>
-          <div slot="header">{{ $t('configuration')}}</div>
+          <div slot="header">{{ $t("configuration") }}</div>
           <mu-form v-bind:model="form">
-            <mu-form-item prop="switch" v-bind:label="$t('visibility')" label-position="left">
-              <mu-switch v-model="form.isVisible" v-on:change="changeRoomVisibility"></mu-switch>
+            <mu-form-item
+              prop="switch"
+              v-bind:label="$t('visibility')"
+              label-position="left"
+            >
+              <mu-switch
+                v-model="form.isVisible"
+                v-on:change="changeRoomVisibility"
+              ></mu-switch>
             </mu-form-item>
           </mu-form>
         </mu-expansion-panel>
         <mu-expansion-panel v-if="eqLogics.length > 0">
-          <div slot="header">{{ $t('equipments')}}</div>
+          <div slot="header">{{ $t("equipments") }}</div>
           <draggable
             v-model="eqLogics"
-            @start="drag=true"
-            @end="drag=false"
+            @start="drag = true"
+            @end="drag = false"
             class="draggable-list"
             v-on:update="saveOrderData"
           >
             <div v-for="eqLogic in eqLogics" v-bind:key="eqLogic.id">
-              <span v-on:click="showCommandsDialog(eqLogic.id)">{{eqLogic.name}}</span>
+              <span v-on:click="showCommandsDialog(eqLogic.id)">{{
+                eqLogic.name
+              }}</span>
               <mu-icon class="draggable-handle" value="drag_handle"></mu-icon>
-              <mu-list-item-action v-on:click="changeEqLogicVisibility(eqLogic.id)">
-                <mu-icon v-bind:data-id="eqLogic.id" v-bind:value="eqLogicsVisibility[eqLogic.id]"></mu-icon>
+              <mu-list-item-action
+                v-on:click="changeEqLogicVisibility(eqLogic.id)"
+              >
+                <mu-icon
+                  v-bind:data-id="eqLogic.id"
+                  v-bind:value="eqLogicsVisibility[eqLogic.id]"
+                ></mu-icon>
               </mu-list-item-action>
             </div>
           </draggable>
         </mu-expansion-panel>
       </mu-container>
     </template>
-    <mu-dialog title="Phone Ringtone" width="360" scrollable v-bind:open.sync="cmdDialogShowed">
+    <mu-dialog
+      title="Phone Ringtone"
+      width="360"
+      scrollable
+      v-bind:open.sync="cmdDialogShowed"
+    >
       <mu-list>
         <div v-for="cmd in cmdsToShow" v-bind:key="cmd.id">
           <mu-list-item-action>
@@ -79,7 +116,13 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           </mu-list-item-action>
         </div>
       </mu-list>
-      <mu-button slot="actions" flat color="primary" v-on:click="closeCommandsDialog">ok</mu-button>
+      <mu-button
+        slot="actions"
+        flat
+        color="primary"
+        v-on:click="closeCommandsDialog"
+        >ok</mu-button
+      >
     </mu-dialog>
   </mu-container>
 </template>

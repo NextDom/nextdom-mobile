@@ -21,7 +21,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 <template>
   <mu-grid-tile class="room-widget">
     <span slot="title">{{ room.name }}</span>
-    <router-link v-bind:to="{ name: 'rooms', params: { roomId: room.id }}">
+    <router-link v-bind:to="{ name: 'rooms', params: { roomId: room.id } }">
       <div class="icon">
         <i v-bind:class="[isVisible ? 'visible' : 'invisible', roomIcon]"></i>
       </div>

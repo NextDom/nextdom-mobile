@@ -25,9 +25,22 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       v-on:setCurrentView="setCurrentView"
       v-on:changeView="changeView"
     />
-    <mu-bottom-nav class="bottom-nav" v-bind:value.sync="currentView" shift @change="changeView">
-      <mu-bottom-nav-item value="/" v-bind:title="$t('summaryTitle')" icon="home" />
-      <mu-bottom-nav-item value="/rooms" v-bind:title="$t('roomsTitle')" icon="meeting_room" />
+    <mu-bottom-nav
+      class="bottom-nav"
+      v-bind:value.sync="currentView"
+      shift
+      @change="changeView"
+    >
+      <mu-bottom-nav-item
+        value="/"
+        v-bind:title="$t('summaryTitle')"
+        icon="home"
+      />
+      <mu-bottom-nav-item
+        value="/rooms"
+        v-bind:title="$t('roomsTitle')"
+        icon="meeting_room"
+      />
       <mu-bottom-nav-item
         value="/scenarios"
         v-bind:title="$t('scenariosTitle')"
@@ -49,7 +62,13 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
     <mu-snackbar id="test" color="error" v-bind:open.sync="showedError">
       <mu-icon left value="warning"></mu-icon>
       {{ errorMsg }}
-      <mu-button flat slot="action" color="#fff" v-on:click="showedError = false">{{ $t('close') }}</mu-button>
+      <mu-button
+        flat
+        slot="action"
+        color="#fff"
+        v-on:click="showedError = false"
+        >{{ $t("close") }}</mu-button
+      >
     </mu-snackbar>
   </div>
 </template>

@@ -20,7 +20,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global login">
-    <h1>{{ $t('loginTitle')}}</h1>
+    <h1>{{ $t("loginTitle") }}</h1>
     <mu-form v-bind:model="form">
       <mu-form-item v-bind:label="$t('login')" icon="account_circle">
         <mu-text-field v-model="form.username"></mu-text-field>
@@ -34,13 +34,13 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       </mu-alert>
       <mu-button color="primary" v-on:click="login()">
         <mu-icon left value="lock_open"></mu-icon>
-        {{ $t('connect')}}
+        {{ $t("connect") }}
       </mu-button>
     </mu-form>
     <p>
       <mu-button color="secondary" v-on:click="forceDesktop()">
         <mu-icon left value="desktop_mac"></mu-icon>
-        {{ $t('desktopVersion')}}
+        {{ $t("desktopVersion") }}
       </mu-button>
     </p>
   </mu-container>
