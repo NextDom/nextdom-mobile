@@ -29,16 +29,22 @@ export default {
     this.Communication = Communication;
   },
   /**
-   * Call getNewEvents in background
+   * Start event loop
    */
   loop() {
     if (!this.store.getters.isEventsManagerStarted()) {
       this.store.commit("setEventsManagerState", true);
-      let self = this;
-      setTimeout(function() {
-        self.getNewEvents();
-      }, 1);
+      this.execute();
     }
+  },
+  /**
+   * Event loop execution
+   */
+  execute() {
+    let self = this;
+    setTimeout(function() {
+      self.getNewEvents();
+    }, 1);
   },
   /**
    * Get new events since last call
@@ -67,6 +73,6 @@ export default {
         });
       }
     });
-    this.loop();
+    this.execute();
   }
 };
