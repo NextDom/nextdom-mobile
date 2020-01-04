@@ -71,6 +71,14 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "../assets/theme-color.scss";
+.mu-grid-tile-titlebar .mu-grid-tile-title-container {
+  margin: 0 !important;
+}
+
+.mu-grid-tile-title span {
+  display: block;
+  text-align: center;
+}
 
 .icon > i {
   width: 100%;
