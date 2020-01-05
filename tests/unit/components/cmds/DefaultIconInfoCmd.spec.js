@@ -20,7 +20,7 @@ const propsData = {
     state: 12,
     unite: "m"
   },
-  icon: "fa fa-check",
+  icon: "fas fa-check",
   showTitle: true
 };
 

@@ -22,14 +22,14 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
   <mu-container class="global rooms">
     <h1>{{ $t("roomsTitle") }}</h1>
     <template v-if="room">
-      <mu-container class="button-wrapper">
+      <mu-container class="button-wrapper room-button">
         <mu-button
           class="pull-left"
           color="primary"
           v-bind:to="fatherLink"
           v-if="showFatherLink"
         >
-          <mu-icon left value="chevron_left"></mu-icon>
+          <mu-icon left value="menu_open"></mu-icon>
           <template v-if="room.father !== undefined">{{
             room.father.name
           }}</template>
@@ -43,12 +43,12 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           v-bind:to="viewLink"
           v-if="room.id"
         >
-          <mu-icon left value="pageview"></mu-icon>
+          <mu-icon left value="developer_board"></mu-icon>
           {{ $t("summary") }}
         </mu-button>
       </mu-container>
       <h2 v-if="room.id">{{ room.name }}</h2>
-      <mu-grid-list v-bind:cols="3" v-bind:padding="0">
+      <mu-grid-list v-bind:cols="2" v-bind:padding="0">
         <RoomWidget
           v-for="child in room.children"
           v-bind:key="child.id"
@@ -57,14 +57,10 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       </mu-grid-list>
       <mu-container class="room-config" v-if="room.id">
         <mu-expansion-panel>
-          <div slot="header">{{ $t("configuration") }}</div>
+          <div slot="header"><i class="fas fa-cog mu-icon-left"></i>{{ $t("configuration") }}</div>
           <mu-form v-bind:model="form">
-            <mu-form-item
-              prop="switch"
-              v-bind:label="$t('visibility')"
-              label-position="left"
-            >
-              <mu-switch
+            <span>{{ $t('visibility') }}</span>
+            <mu-switch class="pull-right"
                 v-model="form.isVisible"
                 v-on:change="changeRoomVisibility"
               ></mu-switch>
@@ -72,7 +68,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           </mu-form>
         </mu-expansion-panel>
         <mu-expansion-panel v-if="eqLogics.length > 0">
-          <div slot="header">{{ $t("equipments") }}</div>
+          <div slot="header"><i class="fas fa-plug mu-icon-left"></i>{{ $t("equipments") }}</div>
           <draggable
             v-model="eqLogics"
             @start="drag = true"
@@ -367,63 +363,46 @@ export default {
   display: block;
 }
 
-h2 {
-  margin: 0.5rem;
-}
-
-.room-config {
+.room-config,
+.room-button {
   padding-right: 0.2rem;
   padding-left: 0.2rem;
   margin-top: 0.5rem;
 }
 
+.room-widget {
+  height: 155px !important;
+}
+
 .mu-grid-tile-wrapper {
-  padding: 0.2rem !important;
+  padding: 0.3rem !important;
 }
 
-.mu-grid-tile-titlebar {
-  height: 2.6rem;
-}
-
-.mu-grid-tile .icon > i {
-  padding-top: 25%;
-  font-size: 4rem;
-  color: $textAlternate;
-}
-
-.mu-grid-tile {
-  background-color: $textPrimary;
-}
-
-.draggable-list > div {
-  width: 100%;
-  display: block;
-  height: 2rem;
-  background-color: white;
-}
-
-.draggable-list > div:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.draggable-list > div span {
-  float: left;
-  padding-left: 0.6rem;
-  line-height: 2rem;
-}
-
-.draggable-list > div .mu-item-action {
-  float: right;
-}
-
-.draggable-list > div .mu-item-action .mu-icon {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.draggable-list > div .draggable-handle {
-  float: right;
-  line-height: 2rem;
+.draggable-list {
+  > div {
+    width: 100%;
+    display: block;
+    height: 2rem;
+    background-color: white;
+  }
+  > div:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  > div span {
+    float: left;
+    line-height: 2rem;
+  }
+  > div .mu-item-action {
+    float: right;
+  }
+  > div .mu-item-action .mu-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  > div .draggable-handle {
+    float: right;
+    line-height: 2rem;
+  }
 }
 
 .mu-checkbox {

@@ -35,7 +35,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
     </mu-button>
     <mu-expansion-panel>
       <div slot="header">
-        <i class="fa fa-cogs"></i>
+        <i class="fas fa-cogs mu-icon-left"></i>
         {{ $t("advancedFeatures") }}
       </div>
       <mu-button

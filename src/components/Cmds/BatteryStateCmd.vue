@@ -52,7 +52,7 @@ export default {
      */
     update() {
       this.icon = "battery_full";
-      if (this.cmd.value < 30) {
+      if (this.cmd.value < 10) {
         this.icon = "battery_alert";
       }
       /**

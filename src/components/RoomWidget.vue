@@ -69,21 +69,25 @@ export default {
   }
 };
 </script>
+
 <style scoped lang="scss">
 @import "../assets/theme-color.scss";
 
-.icon > i {
-  width: 100%;
-  display: block;
-  text-align: center;
-  font-size: 5rem;
-  padding: 1rem 0.5rem 0 0.5rem;
-}
 .visible {
   color: $primary;
 }
 
 .invisible {
   color: $secondary;
+}
+
+.icon > i {
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 48px;
+  text-align: center;
+  font-size: 4rem;
+  padding: 0 0.5rem 1rem 0.5rem;
 }
 </style>

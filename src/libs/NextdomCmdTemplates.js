@@ -40,6 +40,7 @@ import RefreshCmd from "@/components/Cmds/RefreshCmd.vue";
 import SabotageInfoCmd from "@/components/Cmds/SabotageInfoCmd.vue";
 import SliderCmd from "@/components/Cmds/SliderCmd.vue";
 import TemperatureInfoCmd from "@/components/Cmds/TemperatureInfoCmd.vue";
+import VoltageInfoCmd from "@/components/Cmds/VoltageInfoCmd.vue";
 import WindowStateCmd from "@/components/Cmds/WindowStateCmd.vue";
 
 export default {
@@ -67,6 +68,7 @@ export default {
     RefreshCmd,
     SabotageInfoCmd,
     TemperatureInfoCmd,
+    VoltageInfoCmd,
     WindowStateCmd
   },
   cmds: {
@@ -275,6 +277,11 @@ export default {
     },
     OPENING_WINDOW: {
       component: "WindowStateCmd",
+      icon: true,
+      button: false
+    },
+    VOLTAGE: {
+      component: "VoltageInfoCmd",
       icon: true,
       button: false
     }

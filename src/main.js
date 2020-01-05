@@ -41,7 +41,7 @@ require("./assets/icons/personne/style.css");
 require("./assets/icons/securite/style.css");
 require("./assets/icons/transport/style.css");
 require("../node_modules/font-awesome/css/font-awesome.css");
-require("../node_modules/font-awesome5/css/fontawesome-all.css");
+require("../node_modules/@fortawesome/fontawesome-free/css/all.css");
 
 import Communication from "./libs/Communication.js";
 import { store } from "./libs/Store.js";

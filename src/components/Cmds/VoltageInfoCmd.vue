@@ -27,10 +27,10 @@ import BaseIconInfoCmd from "./BaseIconInfoCmd";
  * @group Commands
  */
 export default {
-  name: "HumidityInfoCmd",
+  name: "VoltageInfoCmd",
   extends: BaseIconInfoCmd,
   mounted() {
-    this.icon = "fas fa-tint";
+    this.icon = "fas fa-car-battery";
   }
 };
 </script>
