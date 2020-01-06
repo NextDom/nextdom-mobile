@@ -40,11 +40,12 @@ require("./assets/icons/nourriture/style.css");
 require("./assets/icons/personne/style.css");
 require("./assets/icons/securite/style.css");
 require("./assets/icons/transport/style.css");
-require("../node_modules/font-awesome/css/font-awesome.css");
 require("../node_modules/@fortawesome/fontawesome-free/css/all.css");
+require("../node_modules/font-awesome/css/font-awesome.css");
 
 import Communication from "./libs/Communication.js";
 import { store } from "./libs/Store.js";
+import { filters } from "./libs/Filters.js";
 import { i18n } from "./libs/i18n";
 import EventsManager from "./libs/EventsManager.js";
 

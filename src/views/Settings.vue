@@ -20,19 +20,20 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global settings">
-    <h1>{{ $t("settingsTitle") }}</h1>
-    <mu-button id="disconnect-button" color="primary" v-on:click="disconnect">
-      <mu-icon left value="lock_open"></mu-icon>
-      {{ $t("disconnect") }}
-    </mu-button>
-    <mu-button
-      id="force-desktop-button"
-      color="secondary"
-      v-on:click="forceDesktop()"
-    >
-      <mu-icon left value="desktop_mac"></mu-icon>
-      {{ $t("desktopVersion") }}
-    </mu-button>
+    <mu-container class="button-wrapper settings-button">
+      <mu-button id="disconnect-button" color="primary" v-on:click="disconnect">
+        <mu-icon left value="lock_open"></mu-icon>
+        {{ $t("disconnect") }}
+      </mu-button>
+      <mu-button
+        id="force-desktop-button"
+        color="secondary"
+        v-on:click="forceDesktop()"
+      >
+        <mu-icon left value="desktop_mac"></mu-icon>
+        {{ $t("desktopVersion") }}
+      </mu-button>
+    </mu-container>
     <mu-expansion-panel>
       <div slot="header">
         <i class="fas fa-cogs mu-icon-left"></i>
@@ -189,7 +190,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.settings-button {
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  margin-top: 0.5rem;
+}
 #disconnect-button,
 #force-desktop-button {
   width: 100%;

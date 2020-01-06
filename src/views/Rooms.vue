@@ -20,7 +20,6 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global rooms">
-    <h1>{{ $t("roomsTitle") }}</h1>
     <template v-if="room">
       <mu-container class="button-wrapper room-button">
         <mu-button

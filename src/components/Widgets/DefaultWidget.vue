@@ -37,6 +37,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           <mu-icon value="refresh"></mu-icon>
         </mu-button>
         <mu-button class="pull-right" slot="action" icon v-if="batteryIcon">
+          <span v-if="batteryValue!=100" class="battery-text">{{ batteryValue | round }} %</span>
           <mu-icon v-bind:value="batteryIcon"></mu-icon>
         </mu-button>
       </span>

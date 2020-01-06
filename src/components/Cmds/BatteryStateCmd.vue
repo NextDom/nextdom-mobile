@@ -32,7 +32,7 @@ export default {
   data: function() {
     return {
       // Showed icon
-      icon: "battery_full"
+      icon: "battery_std"
     };
   },
   render: function() {
@@ -51,14 +51,16 @@ export default {
      * Called on command value change
      */
     update() {
-      this.icon = "battery_full";
-      if (this.cmd.value < 10) {
+      this.icon = "battery_std";
+      if (this.cmd.state < 10) {
         this.icon = "battery_alert";
+      } else if (this.cmd.state >= 100) {
+        this.icon = "battery_full";
       }
       /**
        * Update battery icon on widget
        */
-      this.$emit("setBatteryInfo", this.icon);
+      this.$emit("setBatteryInfo", this.icon, this.cmd.state);
     }
   }
 };
