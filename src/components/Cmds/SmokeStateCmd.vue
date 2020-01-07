@@ -19,25 +19,25 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div class="plug-state-cmd cmd icon">
-    <i class="fas" v-bind:class="icon" v-on:click="action"></i>
+  <div class="lock-state-cmd cmd icon">
+    <i class="fas" v-bind:class="icon"></i>
   </div>
 </template>
 
 <script>
 /**
- * Show plug state with icon
+ * Show lock state with icon
  * @group Commands
  */
 export default {
-  name: "PlugStateCmd",
+  name: "SmokeStateCmd",
   props: {
     // Command object
     cmd: null
   },
   data: function() {
     return {
-      icon: "fa-times"
+      icon: "fa-check"
     };
   },
   mounted() {
@@ -49,27 +49,14 @@ export default {
   },
   methods: {
     /**
-     * @vuese
-     * Send action event to widget
-     */
-    action() {
-      let action = "ENERGY_ON";
-      if (this.cmd.state) {
-        action = "ENERGY_OFF";
-      }
-      // Send event to Widget component that execute an action linked
-      // @arg Id of the command to execute
-      this.$emit("executeAction", this.cmd.id, action);
-    },
-    /**
      * @vuejs
      * Called on update for change icon
      */
     update() {
       if (this.cmd.state) {
-        this.icon = "fa-plug";
+        this.icon = "fa-fire-extinguisher";
       } else {
-        this.icon = "fa-times";
+        this.icon = "fa-check";
       }
     }
   }

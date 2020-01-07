@@ -18,47 +18,19 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Email   <admin@nextdom.org>
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
-<template>
-  <div class="presence-state-cmd cmd icon">
-    <i class="fas" v-bind:class="icon"></i>
-  </div>
-</template>
 
 <script>
+import BaseIconInfoCmd from "./BaseIconInfoCmd";
+
 /**
- * Show presence state with icon
+ * Show standard command that get numeric data (with unite)
  * @group Commands
  */
 export default {
-  name: "PresenceStateCmd",
-  props: {
-    // Command object
-    cmd: null
-  },
-  data: function() {
-    return {
-      icon: "fa-check"
-    };
-  },
+  name: "UVInfoCmd",
+  extends: BaseIconInfoCmd,
   mounted() {
-    this.update();
-    this.$store.commit("addShowedCmd", {
-      cmd: this.cmd,
-      updateFunc: this.update
-    });
-  },
-  methods: {
-    /**
-     * @vuejs
-     * Called on update for change icon
-     */
-    update() {
-      if (this.cmd.state) {
-        this.icon = "fa-walking";
-      } else {
-        this.icon = "fa-check";
-      }
-    }
+    this.icon = "fas fa-umbrella-beach";
   }
 };
 </script>

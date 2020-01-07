@@ -89,5 +89,6 @@ export default {
   text-align: center;
   font-size: 4rem;
   padding: 0 0.5rem 1rem 0.5rem;
+  min-height: 80px;
 }
 </style>
