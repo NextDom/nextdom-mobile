@@ -26,6 +26,8 @@ import "material-icons";
 import "./assets/theme-color";
 import "./assets/theme.css";
 
+require("../node_modules/@fortawesome/fontawesome-free/css/all.css");
+require("../node_modules/font-awesome/css/font-awesome.css");
 require("./assets/icon/animal/style.css");
 require("./assets/icon/divers/style.css");
 require("./assets/icon/fashion/style.css");
@@ -39,13 +41,11 @@ require("./assets/icon/nextdomapp/style.css");
 require("./assets/icon/nourriture/style.css");
 require("./assets/icon/personne/style.css");
 require("./assets/icon/securite/style.css");
+require("./assets/icon/techno/style.css");
 require("./assets/icon/transport/style.css");
-require("../node_modules/@fortawesome/fontawesome-free/css/all.css");
-require("../node_modules/font-awesome/css/font-awesome.css");
 
 import Communication from "./libs/Communication.js";
 import { store } from "./libs/Store.js";
-import { filters } from "./libs/Filters.js";
 import { i18n } from "./libs/i18n";
 import EventsManager from "./libs/EventsManager.js";
 

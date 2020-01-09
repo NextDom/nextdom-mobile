@@ -19,7 +19,11 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div v-packery-item class="packery-item" v-bind:class="[isLargeWidget ? 'large' : 'small']">
+  <div
+    v-packery-item
+    class="packery-item"
+    v-bind:class="[isLargeWidget ? 'large' : 'small']"
+  >
     <div class="widget-title">
       <span class="title">{{ eqLogic.name }}</span>
       <span class="actions pull-right">
@@ -33,7 +37,9 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           <mu-icon value="refresh"></mu-icon>
         </mu-button>
         <mu-button class="pull-right" slot="action" icon v-if="batteryIcon">
-          <span v-if="batteryValue!=100" class="battery-text">{{ batteryValue | round }} %</span>
+          <span v-if="batteryValue != 100" class="battery-text"
+            >{{ batteryValue | round }} %</span
+          >
           <mu-icon v-bind:value="batteryIcon"></mu-icon>
         </mu-button>
       </span>

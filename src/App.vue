@@ -150,6 +150,6 @@ export default {
 }
 
 .global {
-  margin-bottom: 56px;
+  margin-bottom: 65px;
 }
 </style>

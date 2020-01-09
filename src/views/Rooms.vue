@@ -32,9 +32,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           <template v-if="room.father !== undefined">{{
             room.father.name
           }}</template>
-          <template v-else
-            >Racine</template
-          >
+          <template v-else>Racine</template>
         </mu-button>
         <mu-button
           class="pull-right"
@@ -56,18 +54,22 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
       </mu-grid-list>
       <mu-container class="room-config" v-if="room.id">
         <mu-expansion-panel>
-          <div slot="header"><i class="fas fa-cog mu-icon-left"></i>{{ $t("configuration") }}</div>
+          <div slot="header">
+            <i class="fas fa-cog mu-icon-left"></i>{{ $t("configuration") }}
+          </div>
           <mu-form v-bind:model="form">
-            <span>{{ $t('visibility') }}</span>
-            <mu-switch class="pull-right"
-                v-model="form.isVisible"
-                v-on:change="changeRoomVisibility"
-              ></mu-switch>
-            </mu-form-item>
+            <span>{{ $t("visibility") }}</span>
+            <mu-switch
+              class="pull-right"
+              v-model="form.isVisible"
+              v-on:change="changeRoomVisibility"
+            ></mu-switch>
           </mu-form>
         </mu-expansion-panel>
         <mu-expansion-panel v-if="eqLogics.length > 0">
-          <div slot="header"><i class="fas fa-plug mu-icon-left"></i>{{ $t("equipments") }}</div>
+          <div slot="header">
+            <i class="fas fa-plug mu-icon-left"></i>{{ $t("equipments") }}
+          </div>
           <draggable
             v-model="eqLogics"
             @start="drag = true"
