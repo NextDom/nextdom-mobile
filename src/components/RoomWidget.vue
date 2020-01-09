@@ -69,6 +69,7 @@ export default {
   }
 };
 </script>
+
 <style scoped lang="scss">
 @import "../assets/theme-color.scss";
 .mu-grid-tile-titlebar .mu-grid-tile-title-container {
@@ -80,18 +81,22 @@ export default {
   text-align: center;
 }
 
-.icon > i {
-  width: 100%;
-  display: block;
-  text-align: center;
-  font-size: 5rem;
-  padding: 1rem 0.5rem 0 0.5rem;
-}
 .visible {
   color: $primary;
 }
 
 .invisible {
   color: $secondary;
+}
+
+.icon > i {
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 48px;
+  text-align: center;
+  font-size: 4rem;
+  padding: 0 0.5rem 1rem 0.5rem;
+  min-height: 80px;
 }
 </style>

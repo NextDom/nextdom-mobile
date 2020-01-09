@@ -46,7 +46,7 @@ describe("PresenceStateCmd.vue", () => {
   test("test default unlocked", () => {
     propsData.cmd.state = false;
     const wrapper = mount(PresenceStateCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("fa-expand");
+    expect(wrapper.vm.$data.icon).toBe("fa-check");
   });
   test("cmd store interaction", () => {
     const wrapper = mount(PresenceStateCmd, wrapperOptions);
@@ -54,6 +54,6 @@ describe("PresenceStateCmd.vue", () => {
     const updateFunc = mutations.addShowedCmd.mock.calls[0][1].updateFunc;
     wrapper.setProps({ cmd: { state: false } });
     updateFunc();
-    expect(wrapper.vm.$data.icon).toBe("fa-expand");
+    expect(wrapper.vm.$data.icon).toBe("fa-check");
   });
 });

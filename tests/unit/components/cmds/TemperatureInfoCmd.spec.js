@@ -41,6 +41,6 @@ describe("TemperatureInfoCmd.vue", () => {
   });
   test("icon initiliazation", () => {
     const wrapper = mount(TemperatureInfoCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("fa fa-thermometer-empty");
+    expect(wrapper.vm.$data.icon).toBe("fas fa-thermometer-half");
   });
 });

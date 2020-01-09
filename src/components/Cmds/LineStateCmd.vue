@@ -41,7 +41,7 @@ export default {
   },
   data: function() {
     return {
-      icon: "fa-check"
+      icon: "fa-times"
     };
   },
   mounted() {

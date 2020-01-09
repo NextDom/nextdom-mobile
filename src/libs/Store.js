@@ -277,7 +277,7 @@ export const store = new Vuex.Store({
     /**
      * Get eqLogics order
      */
-    getEqLogicsOrder: state => payload => {
+    getEqLogicsOrder: state => () => {
       return state.eqLogicsOrder;
     },
     /**

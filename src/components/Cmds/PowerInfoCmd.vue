@@ -30,7 +30,7 @@ export default {
   name: "PowerInfoCmd",
   extends: BaseIconInfoCmd,
   mounted() {
-    this.icon = "fa fa-bolt";
+    this.icon = "fas fa-bolt";
   }
 };
 </script>

@@ -37,7 +37,7 @@ export default {
   },
   data: function() {
     return {
-      icon: "nextdom-lumiere-on"
+      icon: "nextdom-lumiere-off"
     };
   },
   mounted() {

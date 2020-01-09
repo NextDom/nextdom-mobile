@@ -19,10 +19,9 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <mu-container class="presence-state-cmd cmd">
-    <span class="pull-left">{{ cmd.name }}</span>
-    <i class="fas pull-right" v-bind:class="icon"></i>
-  </mu-container>
+  <div class="presence-state-cmd cmd icon">
+    <i class="fas" v-bind:class="icon"></i>
+  </div>
 </template>
 
 <script>
@@ -38,7 +37,7 @@ export default {
   },
   data: function() {
     return {
-      icon: "fa-walking"
+      icon: "fa-check"
     };
   },
   mounted() {
@@ -57,7 +56,7 @@ export default {
       if (this.cmd.state) {
         this.icon = "fa-walking";
       } else {
-        this.icon = "fa-expand";
+        this.icon = "fa-check";
       }
     }
   }

@@ -20,9 +20,9 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global scenarios">
-    <h1>{{ $t("scenariosTitle") }}</h1>
-    <mu-list toggle-nested v-if="scenarios !== null">
-      <mu-list-item
+    <mu-container toggle-nested v-if="scenarios !== null">
+      <mu-expansion-panel
+        expand
         button
         nested
         v-for="groupName in sortedGroupsList"
@@ -30,37 +30,21 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         v-bind:open="groupsListState[groupName]"
         v-on:click="toggleItem(groupName)"
       >
-        <mu-list-item-title>
-          <template v-if="groupName === 'no-group'">{{
-            $t("nothing")
-          }}</template>
+        <div slot="header">
+          <template v-if="groupName === 'no-group'">
+            {{ $t("nothing") }}
+          </template>
           <template v-else>{{ groupName }}</template>
-        </mu-list-item-title>
-        <mu-list-item-action>
-          <mu-icon
-            class="toggle-icon"
-            size="24"
-            value="keyboard_arrow_down"
-          ></mu-icon>
-        </mu-list-item-action>
-        <mu-list-item
-          slot="nested"
-          v-for="scenario in scenarios[groupName]"
-          v-bind:key="scenario.id"
-          v-bind:id="'scenario-' + scenario.id"
-        >
-          <mu-list-item-action>
-            <i v-bind:class="scenarioIcon(scenario)"></i>
-          </mu-list-item-action>
-          <mu-list-item-title>{{ scenario.name }}</mu-list-item-title>
-          <mu-list-item-action>
-            <div>
-              <mu-icon
-                size="24"
-                v-bind:value="activeStateIcon(scenario.active)"
-                v-on:click="changeActiveState(scenario.id, !scenario.active)"
-                class="scenario-active"
-              ></mu-icon>
+        </div>
+        <div class="scenario-list">
+          <div
+            v-for="scenario in scenarios[groupName]"
+            v-bind:key="scenario.id"
+            v-bind:id="'scenario-' + scenario.id"
+          >
+            <i v-bind:class="scenarioIcon(scenario)" class="mu-icon-left"></i>
+            <span>{{ scenario.name }}</span>
+            <div class="mu-item-action">
               <mu-icon
                 class="scenario-state"
                 size="24"
@@ -68,10 +52,18 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
                 v-on:click="launch(scenario.id)"
               ></mu-icon>
             </div>
-          </mu-list-item-action>
-        </mu-list-item>
-      </mu-list-item>
-    </mu-list>
+            <div class="mu-item-action">
+              <mu-icon
+                size="24"
+                v-bind:value="activeStateIcon(scenario.active)"
+                v-on:click="changeActiveState(scenario.id, !scenario.active)"
+                class="scenario-active"
+              ></mu-icon>
+            </div>
+          </div>
+        </div>
+      </mu-expansion-panel>
+    </mu-container>
   </mu-container>
 </template>
 
@@ -100,8 +92,9 @@ export default {
      * Get groups list with no-group first
      */
     sortedGroupsList: function() {
+      let groupsList = null;
       if (this.scenarios !== null) {
-        let groupsList = Object.keys(this.scenarios).sort((a, b) => {
+        groupsList = Object.keys(this.scenarios).sort((a, b) => {
           if (a === "no-group") {
             return -1;
           } else if (b === "no-group") {
@@ -113,8 +106,8 @@ export default {
           }
           return 0;
         });
-        return groupsList;
       }
+      return groupsList;
     }
   },
   mounted() {
@@ -252,10 +245,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mu-item-action i {
-  font-size: 1.4rem;
+.scenarios {
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  margin-top: 0.5rem;
 }
-.mu-item-action > div > i:first-child {
-  margin-right: 0.2rem;
+.scenario-list {
+  > div {
+    line-height: 2.5rem;
+  }
+  > div .mu-item-action {
+    float: right;
+    min-width: 0;
+  }
+  > div i {
+    line-height: 2.5rem;
+  }
+  .mu-item-action i {
+    text-align: right;
+    margin-left: 13px;
+  }
 }
 </style>

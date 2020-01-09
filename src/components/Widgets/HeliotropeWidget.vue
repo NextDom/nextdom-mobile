@@ -19,7 +19,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div v-packery-item class="heliotrope packery-item small">
+  <div v-packery-item class="heliotrope packery-item large">
     <div class="widget-title">
       <span class="title">{{ eqLogic.name }}</span>
     </div>
@@ -101,8 +101,7 @@ export default {
 .heliotrope .cmd.icon {
   float: left;
   width: 40%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 1rem;
 }
 
 .heliotrope > div {

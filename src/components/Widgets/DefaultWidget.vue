@@ -19,17 +19,10 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div
-    v-packery-item
-    class="packery-item"
-    v-bind:class="[isLargeWidget ? 'large' : 'small']"
-  >
+  <div v-packery-item class="packery-item" v-bind:class="[isLargeWidget ? 'large' : 'small']">
     <div class="widget-title">
       <span class="title">{{ eqLogic.name }}</span>
       <span class="actions pull-right">
-        <mu-button class="pull-right" slot="action" icon v-if="batteryIcon">
-          <mu-icon v-bind:value="batteryIcon"></mu-icon>
-        </mu-button>
         <mu-button
           class="pull-right"
           slot="action"
@@ -38,6 +31,10 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
           v-if="refreshCmdId"
         >
           <mu-icon value="refresh"></mu-icon>
+        </mu-button>
+        <mu-button class="pull-right" slot="action" icon v-if="batteryIcon">
+          <span v-if="batteryValue!=100" class="battery-text">{{ batteryValue | round }} %</span>
+          <mu-icon v-bind:value="batteryIcon"></mu-icon>
         </mu-button>
       </span>
     </div>
@@ -93,12 +90,16 @@ export default {
      */
     isLargeWidget: function() {
       let result = false;
-      // Large 2 if icons
+      // Large if more than 2 icons
       if (this.iconCmds.length > 2) {
         result = true;
       }
-      // Show buttons at right if there is more than 5 commands
+      // Large if more than 6 buttons
       if (this.buttonCmds.length > 6) {
+        result = true;
+      }
+      // Large if more than 3 data line
+      if (this.dataCmds.length > 4) {
         result = true;
       }
       return result;

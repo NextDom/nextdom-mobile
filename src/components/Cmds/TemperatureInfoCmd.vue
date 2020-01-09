@@ -30,7 +30,7 @@ export default {
   name: "TemperatureInfoCmd",
   extends: BaseIconInfoCmd,
   mounted() {
-    this.icon = "fa fa-thermometer-empty";
+    this.icon = "fas fa-thermometer-half";
   }
 };
 </script>

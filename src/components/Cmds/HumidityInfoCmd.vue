@@ -30,7 +30,7 @@ export default {
   name: "HumidityInfoCmd",
   extends: BaseIconInfoCmd,
   mounted() {
-    this.icon = "fa fa-tint";
+    this.icon = "fas fa-tint";
   }
 };
 </script>

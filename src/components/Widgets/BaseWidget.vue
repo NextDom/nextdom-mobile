@@ -36,6 +36,7 @@ export default {
       refreshCmdId: null,
       largeWidget: false,
       batteryIcon: false,
+      batteryValue: 0,
       iconCmds: [],
       dataCmds: [],
       buttonCmds: []
@@ -134,8 +135,9 @@ export default {
      * Set battery information on widget
      * @arg batteryIcon string Material icon
      */
-    setBatteryInfo(batteryIcon) {
+    setBatteryInfo(batteryIcon, batteryValue) {
       this.batteryIcon = batteryIcon;
+      this.batteryValue = batteryValue;
     },
     /**
      * @vuese

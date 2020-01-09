@@ -20,7 +20,6 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 -->
 <template>
   <mu-container class="global home">
-    <h1>{{ $t("summaryTitle") }}</h1>
     <Dashboard v-bind:roomData="roomData"></Dashboard>
   </mu-container>
 </template>

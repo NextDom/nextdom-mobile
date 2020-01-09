@@ -36,7 +36,7 @@ export default {
   },
   data: function() {
     return {
-      icon: "fa fa-times"
+      icon: "fas fa-times"
     };
   },
   mounted() {
@@ -53,9 +53,9 @@ export default {
      */
     update() {
       if (this.cmd.cmdValue) {
-        this.icon = "fa fa-check";
+        this.icon = "fas fa-check";
       } else {
-        this.icon = "fa fa-times";
+        this.icon = "fas fa-times";
       }
     }
   }

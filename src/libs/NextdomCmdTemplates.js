@@ -25,21 +25,31 @@ import DefaultActionCmd from "@/components/Cmds/DefaultActionCmd.vue";
 import DontCmd from "@/components/Cmds/DontCmd.vue";
 import ActionLinkedCmd from "@/components/Cmds/ActionLinkedCmd.vue";
 import BatteryStateCmd from "@/components/Cmds/BatteryStateCmd.vue";
+import BrightnessInfoCmd from "@/components/Cmds/BrightnessInfoCmd.vue";
 import ColorPickerCmd from "@/components/Cmds/ColorPickerCmd.vue";
 import ConsumptionInfoCmd from "@/components/Cmds/ConsumptionInfoCmd.vue";
 import DoorStateCmd from "@/components/Cmds/DoorStateCmd.vue";
+import FloodStateCmd from "@/components/Cmds/FloodStateCmd.vue";
 import IconStateCmd from "@/components/Cmds/IconStateCmd.vue";
 import HumidityInfoCmd from "@/components/Cmds/HumidityInfoCmd.vue";
 import LightStateCmd from "@/components/Cmds/LightStateCmd.vue";
 import LineStateCmd from "@/components/Cmds/LineStateCmd.vue";
 import LockStateCmd from "@/components/Cmds/LockStateCmd.vue";
+import NoiseInfoCmd from "@/components/Cmds/NoiseInfoCmd.vue";
 import PlugStateCmd from "@/components/Cmds/PlugStateCmd.vue";
+import PollutionInfoCmd from "@/components/Cmds/PollutionInfoCmd.vue";
 import PowerInfoCmd from "@/components/Cmds/PowerInfoCmd.vue";
 import PresenceStateCmd from "@/components/Cmds/PresenceStateCmd.vue";
+import PressureInfoCmd from "@/components/Cmds/PressureInfoCmd.vue";
+import RainInfoCmd from "@/components/Cmds/RainInfoCmd.vue";
 import RefreshCmd from "@/components/Cmds/RefreshCmd.vue";
 import SabotageInfoCmd from "@/components/Cmds/SabotageInfoCmd.vue";
 import SliderCmd from "@/components/Cmds/SliderCmd.vue";
+import SmokeStateCmd from "@/components/Cmds/SmokeStateCmd.vue";
 import TemperatureInfoCmd from "@/components/Cmds/TemperatureInfoCmd.vue";
+import UVInfoCmd from "@/components/Cmds/UVInfoCmd.vue";
+import VoltageInfoCmd from "@/components/Cmds/VoltageInfoCmd.vue";
+import WindInfoCmd from "@/components/Cmds/WindInfoCmd.vue";
 import WindowStateCmd from "@/components/Cmds/WindowStateCmd.vue";
 
 export default {
@@ -52,21 +62,31 @@ export default {
     DontCmd,
     ActionLinkedCmd,
     BatteryStateCmd,
+    BrightnessInfoCmd,
     ColorPickerCmd,
     ConsumptionInfoCmd,
     DoorStateCmd,
+    FloodStateCmd,
     IconStateCmd,
     HumidityInfoCmd,
     LightStateCmd,
     LineStateCmd,
     LockStateCmd,
+    NoiseInfoCmd,
     PlugStateCmd,
+    PollutionInfoCmd,
     PowerInfoCmd,
     PresenceStateCmd,
-    SliderCmd,
+    PressureInfoCmd,
+    RainInfoCmd,
     RefreshCmd,
     SabotageInfoCmd,
+    SliderCmd,
+    SmokeStateCmd,
     TemperatureInfoCmd,
+    UVInfoCmd,
+    VoltageInfoCmd,
+    WindInfoCmd,
     WindowStateCmd
   },
   cmds: {
@@ -184,8 +204,18 @@ export default {
       button: false
     },
     BRIGHTNESS: {
-      component: "DefaultInfoCmd",
-      icon: false,
+      component: "BrightnessInfoCmd",
+      icon: true,
+      button: false
+    },
+    CO: {
+      component: "PollutionInfoCmd",
+      icon: true,
+      button: false
+    },
+    CO2: {
+      component: "PollutionInfoCmd",
+      icon: true,
       button: false
     },
     CONSUMPTION: {
@@ -206,6 +236,11 @@ export default {
     ENERGY_OFF: {
       component: "ActionLinkedCmd",
       icon: false,
+      button: false
+    },
+    FLOOD: {
+      component: "FloodStateCmd",
+      icon: true,
       button: false
     },
     HEATING_STATE: {
@@ -243,8 +278,33 @@ export default {
       icon: false,
       button: false
     },
+    LOCK_STATE: {
+      component: "LockStateCmd",
+      icon: true,
+      button: false
+    },
+    LOCK_OPEN: {
+      component: "ActionLinkedCmd",
+      icon: false,
+      button: false
+    },
+    LOCK_CLOSE: {
+      component: "ActionLinkedCmd",
+      icon: false,
+      button: false
+    },
+    NOISE: {
+      component: "NoiseInfoCmd",
+      icon: true,
+      button: false
+    },
     OPENING: {
       component: "DoorStateCmd",
+      icon: true,
+      button: false
+    },
+    OPENING_WINDOW: {
+      component: "WindowStateCmd",
       icon: true,
       button: false
     },
@@ -255,12 +315,32 @@ export default {
     },
     PRESENCE: {
       component: "PresenceStateCmd",
-      icon: false,
+      icon: true,
+      button: false
+    },
+    PRESSURE: {
+      component: "PressureInfoCmd",
+      icon: true,
+      button: false
+    },
+    RAIN_CURRENT: {
+      component: "RainInfoCmd",
+      icon: true,
+      button: false
+    },
+    RAIN_TOTAL: {
+      component: "RainInfoCmd",
+      icon: true,
       button: false
     },
     SABOTAGE: {
       component: "SabotageInfoCmd",
       icon: false,
+      button: false
+    },
+    SMOKE: {
+      component: "SmokeStateCmd",
+      icon: true,
       button: false
     },
     TEMPERATURE: {
@@ -273,8 +353,18 @@ export default {
       icon: true,
       button: false
     },
-    OPENING_WINDOW: {
-      component: "WindowStateCmd",
+    UV: {
+      component: "UVInfoCmd",
+      icon: true,
+      button: false
+    },
+    VOLTAGE: {
+      component: "VoltageInfoCmd",
+      icon: true,
+      button: false
+    },
+    WIND_SPEED: {
+      component: "WindInfoCmd",
       icon: true,
       button: false
     }

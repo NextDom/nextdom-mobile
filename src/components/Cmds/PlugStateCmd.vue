@@ -37,7 +37,7 @@ export default {
   },
   data: function() {
     return {
-      icon: "fa-plug"
+      icon: "fa-times"
     };
   },
   mounted() {

@@ -1,52 +1,30 @@
 @import "../theme-color.scss";
+$themeRadius: 6px;
 
 .packery-item {
   background-color: $textPrimary;
   margin: 1%;
-  padding-bottom: 0.5rem;
+  border-radius: $themeRadius;
+  div:not(.mu-slider-thumb):last-child {
+    border-radius: 0 0 $themeRadius $themeRadius;
+  }
 }
-
+.packery-item.half-size {
+  width: 50%;
+  float: left;
+}
 .packery-item.small {
   width: 48%;
 }
-
 .packery-item.large {
   width: 98%;
 }
 
-.widget-title {
-  position: relative;
-  width: 100%;
-  background-color: $primary;
-  color: $textPrimary;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  height: 2.2rem;
-  line-height: 2.2rem;
-  margin-bottom: 0;
-}
-
-.widget-title {
-  .title {
-    margin-left: 0.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80%;
-    display: block;
-  }
-
-  span.title {
-    position: absolute;
-    left: 0;
-  }
-
-  button {
-    margin: 0;
-    padding: 0;
-    height: 2.2rem;
-    width: 2.2rem;
-  }
+.packery-item .cmd::after,
+.cmds-data::before {
+  content: "";
+  clear: both;
+  display: block;
 }
 
 .cmds-icon,
@@ -57,6 +35,11 @@
   justify-content: center;
   align-items: stretch;
   align-content: stretch;
+  padding: 0.5rem;
+}
+.cmds-icon:empty,
+.cmds-button:empty {
+    padding: 0;
 }
 
 .cmds-icon {
@@ -65,6 +48,8 @@
     display: flex;
     text-align: center;
     flex: 1 0 auto;
+    align-items: center;
+    margin: 5px 0;
   }
   .cmd.icon > i {
     font-size: 3rem;
@@ -75,6 +60,7 @@
   .info-cmd > i,
   .info-cmd > span > i {
     font-size: 2rem;
+    margin: 0.5rem;
   }
   .info-cmd {
     text-align: center;
@@ -84,51 +70,19 @@
   .cmd.icon > i {
     display: block;
     text-align: center;
-    margin-top: 0.7rem;
-  }
-}
-
-.packery-item .cmd::after,
-.cmds-data::before {
-  content: "";
-  clear: both;
-  display: block;
-}
-
-.cmds-data {
-  .cmd {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-  }
-  .cmd:nth-child(odd) {
-    background-color: $info;
-  }
-  .mu-slider {
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-bottom: 0.3rem;
-    width: 98%;
-  }
-  .line-icon {
-    width: 1rem;
-    display: inline-block;
-    text-align: center;
   }
 }
 
 .cmds-button {
   text-align: center;
   overflow: hidden;
-}
-
-.cmds-button {
   .cmd {
     display: flex;
-    min-width: 25%;
     flex: 1 0 auto;
+    margin: 0.2rem;
+    max-width: 98%;
   }
   button {
-    margin: 0.2rem;
     width: 100%;
   }
 }
@@ -137,7 +91,123 @@
   clear: both;
 }
 
-.packery-item .half-size {
-  width: 50%;
-  float: left;
+.cmds-data {
+  .cmd {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+    line-height: 2.5rem;
+    i {
+      line-height: 2.5rem;
+      margin-top: 0;
+    }
+  }
+  .cmd:nth-child(odd) {
+    background-color: $info;
+  }
+  .mu-slider {
+    width: auto;
+    margin: -0.6rem 0.6rem 0 0.6rem;
+    height: 2.5rem;
+    color: $primary;
+  }
+  .mu-slider-thumb {
+    width: 20px;
+    height: 20px;
+  }
+  .line-icon {
+    width: 1rem;
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.widget-title {
+  position: relative;
+  width: 100%;
+  background-color: $primary;
+  color: $textPrimary;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  margin-bottom: 0;
+  border-radius: $themeRadius $themeRadius 0 0;
+
+  .title {
+    margin-left: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    display: block;
+  }
+
+  .actions {
+    line-height: 2.8rem;
+  }
+
+  span.title {
+    position: absolute;
+    left: 0;
+  }
+
+  button {
+    padding: 0 0 0 0.5rem;
+    height: 2.8rem;
+    width: auto;
+    background-color: $primary;
+    i {
+      font-size: 1.3rem;
+    }
+  }
+  button:first-child {
+    margin-right: 0.7rem;
+  }
+}
+
+.mu-grid-tile {
+  border-radius: $themeRadius;
+  background-color: $textPrimary;
+}
+.mu-grid-tile-titlebar {
+  background-color: $primary !important;
+  border-radius: 0 0 $themeRadius $themeRadius;
+}
+.mu-grid-tile-title span {
+  display: block;
+  text-align: center;
+  padding: 0 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.mu-grid-tile-title-container {
+  margin: 0 !important;
+}
+.mu-raised-button {
+  height: 45px !important;
+  border-radius: $themeRadius !important;
+}
+.mu-expansion-panel__expand .mu-expansion-panel-header {
+  min-height: 48px !important;
+}
+.mu-expansion-panel-header {
+  padding: 0 15px !important;
+}
+.mu-icon-left {
+  margin-right: 8px !important;
+}
+.mu-expansion-panel-content {
+  padding: 8px 18px 24px !important;
+}
+.mu-bottom-nav {
+  -webkit-box-shadow: 0px -4px 17px -5px rgba(0,0,0,0.58);
+  -moz-box-shadow: 0px -4px 17px -5px rgba(0,0,0,0.58);
+  box-shadow: 0px -4px 17px -5px rgba(0,0,0,0.58);
+}
+
+.battery-text {
+  font-size: 0.6rem;
+  word-break: break-word;
+  max-width: 14px;
+  margin-right: -4px;
 }
