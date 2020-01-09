@@ -19,11 +19,7 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
 @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
 -->
 <template>
-  <div
-    v-packery-item
-    class="packery-item"
-    v-bind:class="[isLargeWidget ? 'large' : 'small']"
-  >
+  <div v-packery-item class="packery-item" v-bind:class="[isLargeWidget ? 'large' : 'small']">
     <div class="widget-title">
       <span class="title">{{ eqLogic.name }}</span>
       <span class="actions pull-right">
@@ -103,7 +99,7 @@ export default {
         result = true;
       }
       // Large if more than 3 data line
-      if (this.dataCmds.length > 3) {
+      if (this.dataCmds.length > 4) {
         result = true;
       }
       return result;

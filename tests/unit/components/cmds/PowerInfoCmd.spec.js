@@ -41,6 +41,6 @@ describe("PowerInfoCmd.vue", () => {
   });
   test("icon initiliazation", () => {
     const wrapper = mount(PowerInfoCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("fa fa-bolt");
+    expect(wrapper.vm.$data.icon).toBe("fas fa-bolt");
   });
 });

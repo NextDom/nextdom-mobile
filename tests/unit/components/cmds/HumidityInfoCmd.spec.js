@@ -41,6 +41,6 @@ describe("HumidityInfoCmd.vue", () => {
   });
   test("icon initiliazation", () => {
     const wrapper = mount(HumidityInfoCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("fa fa-tint");
+    expect(wrapper.vm.$data.icon).toBe("fas fa-tint");
   });
 });

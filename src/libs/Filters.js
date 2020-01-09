@@ -17,7 +17,7 @@
  * @Email   <admin@nextdom.org>
  * @Authors/Contributors: Sylvaner, Byackee, cyrilphoenix71, ColonelMoutarde, edgd1er, slobberbone, Astral0, DanoneKiD
  */
- import Vue from "vue";
+import Vue from "vue";
 
 /**
  * Vue filter to round the decimal to the given place.
@@ -26,12 +26,12 @@
  * @param {String} value    The value string.
  * @param {Number} decimals The number of decimal places.
  */
-Vue.filter('round', function(value, decimals) {
-  if(!value) {
+Vue.filter("round", function(value, decimals) {
+  if (!value) {
     value = 0;
   }
 
-  if(!decimals) {
+  if (!decimals) {
     decimals = 0;
   }
 
@@ -43,12 +43,12 @@ Vue.filter('round', function(value, decimals) {
  * Vue filter to truncate a string to the specified length.
  * @param {String} value The value string.
  */
-Vue.filter('truncate', function(value, length) {
-  if(value.length < length) {
+Vue.filter("truncate", function(value, length) {
+  if (value.length < length) {
     return value;
   }
 
   length = length - 3;
 
-  return value.substring(0, length) + '...';
+  return value.substring(0, length) + "...";
 });

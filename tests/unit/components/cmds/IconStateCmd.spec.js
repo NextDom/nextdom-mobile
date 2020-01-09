@@ -44,12 +44,12 @@ describe("IconStateCmd.vue", () => {
 
   test("test default value", () => {
     const wrapper = mount(IconStateCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("fa fa-times");
+    expect(wrapper.vm.$data.icon).toBe("fas fa-times");
   });
   test("test positive value ", () => {
     propsData.cmd.cmdValue = true;
     const wrapper = mount(IconStateCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("fa fa-check");
+    expect(wrapper.vm.$data.icon).toBe("fas fa-check");
   });
   test("cmd store interaction", () => {
     const wrapper = mount(IconStateCmd, wrapperOptions);
@@ -57,6 +57,6 @@ describe("IconStateCmd.vue", () => {
     const updateFunc = mutations.addShowedCmd.mock.calls[0][1].updateFunc;
     wrapper.setProps({ cmd: { cmdValue: true } });
     updateFunc();
-    expect(wrapper.vm.$data.icon).toBe("fa fa-check");
+    expect(wrapper.vm.$data.icon).toBe("fas fa-check");
   });
 });

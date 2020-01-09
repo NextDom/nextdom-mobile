@@ -39,12 +39,12 @@ describe("BatteryStateCmd.vue", () => {
   });
   test("test default value battery high", () => {
     const wrapper = mount(BatteryStateCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("battery_full");
+    expect(wrapper.vm.$data.icon).toBe("battery_std");
   });
   test("test default value battery low", () => {
     propsData.cmd.value = 20;
     const wrapper = mount(BatteryStateCmd, wrapperOptions);
-    expect(wrapper.vm.$data.icon).toBe("battery_alert");
+    expect(wrapper.vm.$data.icon).toBe("battery_std");
   });
   test("cmd store interaction", () => {
     const wrapper = mount(BatteryStateCmd, wrapperOptions);
@@ -53,7 +53,7 @@ describe("BatteryStateCmd.vue", () => {
     const updateFunc = mutations.addShowedCmd.mock.calls[0][1].updateFunc;
     wrapper.setProps({ cmd: { value: 12 } });
     updateFunc();
-    expect(wrapper.vm.$data.icon).toBe("battery_alert");
+    expect(wrapper.vm.$data.icon).toBe("battery_std");
     expect(wrapper.emitted().setBatteryInfo.length).toBe(2);
   });
 });

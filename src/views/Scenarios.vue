@@ -31,9 +31,9 @@ along with NextDom Software. If not, see <http://www.gnu.org/licenses/>.
         v-on:click="toggleItem(groupName)"
       >
         <div slot="header">
-          <template v-if="groupName === 'no-group'">{{
-            $t("nothing")
-          }}</template>
+          <template v-if="groupName === 'no-group'">
+            {{ $t("nothing") }}
+          </template>
           <template v-else>{{ groupName }}</template>
         </div>
         <div class="scenario-list">
@@ -92,8 +92,9 @@ export default {
      * Get groups list with no-group first
      */
     sortedGroupsList: function() {
+      let groupsList = null;
       if (this.scenarios !== null) {
-        let groupsList = Object.keys(this.scenarios).sort((a, b) => {
+        groupsList = Object.keys(this.scenarios).sort((a, b) => {
           if (a === "no-group") {
             return -1;
           } else if (b === "no-group") {
@@ -105,8 +106,8 @@ export default {
           }
           return 0;
         });
-        return groupsList;
       }
+      return groupsList;
     }
   },
   mounted() {
@@ -251,11 +252,11 @@ export default {
 }
 .scenario-list {
   > div {
-   line-height: 2.5rem;
+    line-height: 2.5rem;
   }
   > div .mu-item-action {
     float: right;
-    min-width:0;
+    min-width: 0;
   }
   > div i {
     line-height: 2.5rem;

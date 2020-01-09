@@ -27,7 +27,7 @@ import BaseIconInfoCmd from "./BaseIconInfoCmd";
  * @group Commands
  */
 export default {
-  name: "LuminosityInfoCmd",
+  name: "BrightnessInfoCmd",
   extends: BaseIconInfoCmd,
   mounted() {
     this.icon = "fas fa-sun";

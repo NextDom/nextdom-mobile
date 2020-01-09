@@ -39,7 +39,9 @@ export default {
     // Command object
     cmd: null,
     icon: null,
-    showTitle: true
+    showTitle: {
+      default: true
+    }
   },
   mounted() {
     this.$store.commit("addShowedCmd", { cmd: this.cmd });
